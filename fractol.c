@@ -1,67 +1,97 @@
 #include "./fractol.h"
 
+static mlx_t* initialize_window(void)
+{
+	mlx_t *window;
+
+	window = mlx_init(WIDTH, HEIGHT, "Fractol", true);
+	if (!window)
+		puts(mlx_strerror(mlx_errno));
+	return (window);
+}
+
+static int setup_and_draw(mlx_t *window, int fn_id, int argc, char **argv)
+{
+	t_W_R_D *w_r_d = init_all(window, fn_id, argc, argv);
+	if (w_r_d == NULL)
+		return (0);
+
+	draw_set(w_r_d->r_data);
+	if (mlx_image_to_window(window, w_r_d->r_data->image, 0, 0) == -1)
+	{
+		cleanup_and_exit_failure(window, w_r_d);
+		return (0);
+	}
+
+	init_loops_n_hooks(w_r_d);
+	free_W_R_D(w_r_d);
+	return (1);
+}
+
+static void cleanup_and_exit_failure(mlx_t *window, t_W_R_D *w_r_d)
+{
+	if (w_r_d != NULL)
+		free_W_R_D(w_r_d);
+	mlx_close_window(window);
+	puts(mlx_strerror(mlx_errno));
+}
+
 int main(int argc, char **argv)
 {
-    mlx_t       *window;
-    t_W_R_D     *w_r_d;
+	mlx_t	*window;
+	int		fn_id;
 
-	w_r_d = NULL;
-	if (argc > 1)
+	fn_id = check_input(argc, argv);
+	if (fn_id <= 0)
+		return (EXIT_SUCCESS); // Nothing to do if fn_id is not positive.
+
+	window = initialize_window();
+	if (!window)
+		return (EXIT_FAILURE); // Error message printed in `initialize_window`.
+
+	if (!setup_and_draw(window, fn_id, argc, argv))
 	{
-    	if (!(window = mlx_init(WIDTH, HEIGHT, "Fractol", true)))
-		{
-        	puts(mlx_strerror(mlx_errno));
-        	return EXIT_FAILURE;
-    	}
-		if (!ft_strncmp(argv[1], "julia\0", 6) && argc == 4)
-			w_r_d = init_all(window, 2, argc, argv);
-		else if (!ft_strncmp(argv[1], "mandelbrot\0", 10))
-			w_r_d = init_all(window, 1, argc, argv);
-		else if (!ft_strncmp(argv[1], "debug\0", 5))
-			w_r_d = init_all(window, 0, argc, argv);
-		else
-			printf("bad input\n");
-
-    	if (w_r_d == NULL)
-    	{
-        	mlx_close_window(window);
-        	return EXIT_FAILURE;
-    	}
-
-    	draw_set(w_r_d->r_data);
-
-    	if (mlx_image_to_window(window, w_r_d->r_data->image, 0, 0) == -1) {
-        	mlx_close_window(window);
-        	puts(mlx_strerror(mlx_errno));
-        	return EXIT_FAILURE;
-    	}
-
-    	init_loops_n_hooks(w_r_d);
-    	free_W_R_D(w_r_d);
+		cleanup_and_exit_failure(window, NULL);
+		return (EXIT_FAILURE);
 	}
-    return EXIT_SUCCESS;
+	return (EXIT_SUCCESS);
 }
 
 
 
-int check_input(int argc, char **argv)
-{
-	int f_id;
 
-	if (argc == 1)
-		return (0);
-	if (!ft_strncmp(argv[1], "julia\0", 6))
-		f_id = 2;
-	else if (!ft_strncmp(argv[1], "mandelbrot\0", 10))
-		f_id = 1;
-	else if (!ft_strncmp(argv[1], "debug\0", 5))
-		f_id = 3;
-	else
-		f_id = 0;
-	if (f_id == 2)
-		return (check_julia(int argc, char **argv))
-	if (f_id == 1 &&)
+// int main(int argc, char **argv)
+// {
+// 	mlx_t		*window;
+// 	t_W_R_D		*w_r_d;
+// 	int			fn_id;
 
+// 	w_r_d = NULL;
+// 	fn_id = check_input(argc, argv);
+// 	if (fn_id > 0)
+// 	{
+// 		window = mlx_init(WIDTH, HEIGHT, "Fractol", true);
+// 		if (!(window))
+// 		{
+// 			puts(mlx_strerror(mlx_errno));
+// 			return (EXIT_FAILURE);
+// 		}
+// 		w_r_d = init_all(window, fn_id, argc, argv);
+// 		if (w_r_d == NULL)
+// 		{
+// 			mlx_close_window(window);
+// 			return (EXIT_FAILURE);
+// 		}
+// 		draw_set(w_r_d->r_data);
+// 		if (mlx_image_to_window(window, w_r_d->r_data->image, 0, 0) == -1)
+// 		{
+// 			mlx_close_window(window);
+// 			puts(mlx_strerror(mlx_errno));
+// 			return (EXIT_FAILURE);
+// 		}
+// 		init_loops_n_hooks(w_r_d);
+// 		free_W_R_D(w_r_d);
+// 	}
+// 	return (EXIT_SUCCESS);
+// }
 
-
-}
