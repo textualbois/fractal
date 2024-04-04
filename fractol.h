@@ -19,63 +19,63 @@
 
 
 typedef struct s_Pix{
-    int x;
-    int y;
-}       t_Pix;
+	int x;
+	int y;
+}	t_Pix;
 
 typedef struct s_DoublePair{
-    double  x;
-    double  y;
-}           t_DoublePair;
+	double	x;
+	double	y;
+}	t_DoublePair;
 
 typedef struct s_PixDouble{
-    double  x;
-    double  y;
-}           t_PixDouble;
+	double	x;
+	double	y;
+}	t_PixDouble;
 
 typedef struct s_Pix32{
-    int32_t x;
-    int32_t y;
-}           t_Pix32;
+	int32_t	x;
+	int32_t	y;
+}	t_Pix32;
 
 typedef struct s_FractalBounds{
-    double  min_r;
-    double  max_r;
-    double  min_i;
-    double  max_i;
-}           t_FractalBounds;
+	double	min_r;
+	double	max_r;
+	double	min_i;
+	double	max_i;
+}	t_FractalBounds;
 
 //pixels not to be re_drawn
 typedef struct s_PixelBox{
-    int left_x;
-    int right_x;
-    int top_y;
-    int bottom_y;
-}       t_PixelBox;
+	int left_x;
+	int right_x;
+	int top_y;
+	int bottom_y;
+}	t_PixelBox;
 
 typedef struct s_RenderData{
-    t_FractalBounds *bounds;
-    t_FractalBounds bounds_temp;
-    double          zoom;
-    int             precision;
-    int             Width;
-    int             Height;
+	t_FractalBounds	*bounds;
+	t_FractalBounds	bounds_temp;
+	double			zoom;
+	int				precision;
+	int				Width;
+	int				Height;
 
-    int             block_render;
-    bool            render_required;
-    int             render_status;
+	int				block_render;
+	bool			render_required;
+	int				render_status;
 
-    uint8_t         *buffer_pointer;
-    uint8_t         *pixel_buffer;
-    mlx_image_t     *image;
-    t_DoublePair    *j_params;
-    int             (*set_func)(double, double, int, void*);
-}                   t_RenderData;
+	uint8_t			*buffer_pointer;
+	uint8_t			*pixel_buffer;
+	mlx_image_t		*image;
+	t_DoublePair	*j_params;
+	int				(*set_func)(double, double, int, void*);
+}	t_RenderData;
 
 typedef struct s_W_R_D{
-    mlx_t           *window;
-    t_RenderData    *r_data;
-}                   t_W_R_D;
+	mlx_t			*window;
+	t_RenderData	*r_data;
+}	t_W_R_D;
 
 //init.c
 t_W_R_D *init_all(mlx_t *window, int func_id, int argc, char **argv);
@@ -161,6 +161,13 @@ void    shift_pixels_y_d(t_RenderData *r_d, int shift_offset);
 t_FractalBounds *copy_bounds(t_FractalBounds *src);
 t_PixelBox get_inner_box_from_bounds(t_RenderData *r_d);
 t_PixelBox get_inner_box_from_pixels(t_RenderData *r_d, t_Pix cursor);
+
+//check_input.c
+int check_input(int argc, char **argv);
+
+//check_input_helpers.c
+int ft_isdouble(char *str);
+int ft_isint(char *str);
 
 
 //resize.c
