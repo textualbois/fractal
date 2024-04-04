@@ -1,7 +1,16 @@
 
 # Object files
+obj/*
 *.o
 
 # macOS system files
 .DS_Store
 
+# executable
+a.out
+a.out*
+fractol
+
+#vscode whatever
+.vscode
+.vscode*
