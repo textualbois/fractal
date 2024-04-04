@@ -38,7 +38,7 @@ static int check_julia(int argc, char **argv)
 			return (0);
 		}
 	}
-	return (1);
+	return (2);
 }
 
 static int check_debug(int argc, char **argv)
@@ -47,7 +47,7 @@ static int check_debug(int argc, char **argv)
 	{
 		return (0);
 	}
-	return (1);
+	return (3);
 }
 
 int check_input(int argc, char **argv)
