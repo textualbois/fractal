@@ -24,7 +24,6 @@ static double atod_decimal_part(double res, int sign, const char *nptr, int i)
 	return ((sign * (res + d_part) + (sign == 0) * (res + d_part)));
 }
 
-
 double	ft_atod(const char *nptr)
 {
 	int		i;
