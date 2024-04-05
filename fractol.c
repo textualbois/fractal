@@ -10,6 +10,14 @@ static mlx_t* initialize_window(void)
 	return (window);
 }
 
+static void cleanup_and_exit_failure(mlx_t *window, t_W_R_D *w_r_d)
+{
+	if (w_r_d != NULL)
+		free_W_R_D(w_r_d);
+	mlx_close_window(window);
+	puts(mlx_strerror(mlx_errno));
+}
+
 static int setup_and_draw(mlx_t *window, int fn_id, int argc, char **argv)
 {
 	t_W_R_D *w_r_d = init_all(window, fn_id, argc, argv);
@@ -26,14 +34,6 @@ static int setup_and_draw(mlx_t *window, int fn_id, int argc, char **argv)
 	init_loops_n_hooks(w_r_d);
 	free_W_R_D(w_r_d);
 	return (1);
-}
-
-static void cleanup_and_exit_failure(mlx_t *window, t_W_R_D *w_r_d)
-{
-	if (w_r_d != NULL)
-		free_W_R_D(w_r_d);
-	mlx_close_window(window);
-	puts(mlx_strerror(mlx_errno));
 }
 
 int main(int argc, char **argv)
