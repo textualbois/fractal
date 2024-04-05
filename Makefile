@@ -1,7 +1,7 @@
 NAME = fractol
 
 SRCS_NAME = fractol.c init.c init_helper.c clear.c zoom.c mover.c loops_hooks.c \
-			drawer.c set_functions.c check_input.c check_input_helpers.c\
+			drawer.c set_functions.c check_input.c check_input_helpers.c atod.c\
 			shift_basic.c partial_render_basic.c utils.c delayed_drawer.c resize.c
 SRCS_PATH = ./
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))

@@ -9,8 +9,8 @@ static double atod_decimal_part(double res, int sign, const char *nptr, int i)
 	dev = 10;
 	if (nptr[i] == '\0')
 		return (sign * res + (sign == 0) * res);
-	else if (nptr[i] != '.' && nptr[i] != ',')
-		return (NULL);
+	else if (nptr[i] != '.')
+		return ((sign * res + (sign == 0) * res));
 	else
 	{
 		i++;
@@ -20,8 +20,8 @@ static double atod_decimal_part(double res, int sign, const char *nptr, int i)
 			i++;
 			dev = dev * 10;
 		}
-
 	}
+	return ((sign * (res + d_part) + (sign == 0) * (res + d_part)));
 }
 
 

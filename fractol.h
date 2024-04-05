@@ -162,6 +162,10 @@ t_FractalBounds *copy_bounds(t_FractalBounds *src);
 t_PixelBox get_inner_box_from_bounds(t_RenderData *r_d);
 t_PixelBox get_inner_box_from_pixels(t_RenderData *r_d, t_Pix cursor);
 
+//atod.c
+double	ft_atod(const char *nptr);
+
+
 //check_input.c
 int check_input(int argc, char **argv);
 
