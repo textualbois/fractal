@@ -20,7 +20,9 @@ static void cleanup_and_exit_failure(mlx_t *window, t_W_R_D *w_r_d)
 
 static int setup_and_draw(mlx_t *window, int fn_id, int argc, char **argv)
 {
-	t_W_R_D *w_r_d = init_all(window, fn_id, argc, argv);
+	t_W_R_D *w_r_d;
+
+	w_r_d = init_all(window, fn_id, argc, argv);
 	if (w_r_d == NULL)
 		return (0);
 
@@ -47,10 +49,13 @@ int main(int argc, char **argv)
 
 	window = initialize_window();
 	if (!window)
+	{
+		printf("no window\n");
 		return (EXIT_FAILURE); // Error message printed in `initialize_window`.
-
+	}
 	if (!setup_and_draw(window, fn_id, argc, argv))
 	{
+		printf("setup or draw failed\n");
 		cleanup_and_exit_failure(window, NULL);
 		return (EXIT_FAILURE);
 	}

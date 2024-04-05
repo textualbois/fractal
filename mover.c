@@ -1,6 +1,6 @@
 #include "./fractol.h"
 
-void move_right(t_RenderData *r_d) 
+void move_right(t_RenderData *r_d)
 {
     double r_delta;
     int shift_offset;
@@ -10,7 +10,7 @@ void move_right(t_RenderData *r_d)
 
     r_delta = (r_d->bounds->max_r - r_d->bounds->min_r) * 0.02;
     shift_offset = r_d->Width * 0.02;
-   // render_offset = r_d->bounds->max_r - r_delta; 
+   // render_offset = r_d->bounds->max_r - r_delta;
     r_d->bounds->min_r += r_delta;
     r_d->bounds->max_r += r_delta;
     shift_pixels_x_l(r_d, shift_offset);
@@ -61,7 +61,7 @@ void move_down(t_RenderData *r_d)
     outer_render(r_d, &rendered_pixels);
 }
 
-void move_up(t_RenderData *r_d) 
+void move_up(t_RenderData *r_d)
 {
     double i_delta;
 

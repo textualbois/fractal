@@ -36,17 +36,17 @@ void outer_render(t_RenderData *r_d, t_PixelBox *rendered_pixels)
         while (pix.y < r_d->Height)
         {
             // Check if the current pixel is outside the rendered_pixels box
-            if (pix.x <= rendered_pixels->left_x || pix.x >= rendered_pixels->right_x || 
-                pix.y <= rendered_pixels->top_y || pix.y >= rendered_pixels->bottom_y) 
+            if (pix.x <= rendered_pixels->left_x || pix.x >= rendered_pixels->right_x ||
+                pix.y <= rendered_pixels->top_y || pix.y >= rendered_pixels->bottom_y)
             {
 
                 // Convert pixel position to complex number based on current bounds
                 pixel_to_complex(pix, r_d, &real, &imag);
 
                 // Compute color based on Mandelbrot set function
-                int color_seed = r_d->set_func(real, imag, r_d->precision, r_d->julia_params);
+                int color_seed = r_d->set_func(real, imag, r_d->precision, r_d->j_params);
                 int color = ft_color_from_seed(color_seed, r_d->precision);
-                
+
                 mlx_put_pixel(r_d->image, pix.x, pix.y, color);
             }
             pix.y++;
@@ -75,7 +75,7 @@ void buffer_segment(t_RenderData *r_d, t_PixelBox *pixel_bounds)
             pixel_to_complex(pix, r_d, &real, &imag);
 
             // Compute color based on Mandelbrot set function
-            int color_seed = r_d->set_func(real, imag, r_d->precision, r_d->julia_params);
+            int color_seed = r_d->set_func(real, imag, r_d->precision, r_d->j_params);
             int color = ft_color_from_seed(color_seed, r_d->precision);
             r_d->buffer_pointer = r_d->pixel_buffer + ((pix.y * r_d->Width + pix.x) * BPP);
             mlx_store_pixel(r_d->buffer_pointer, color);
@@ -105,7 +105,7 @@ void draw_segment(t_RenderData *r_d, t_PixelBox *pixel_bounds)
             pixel_to_complex(pix, r_d, &real, &imag);
 
             // Compute color based on Mandelbrot set function
-            int color_seed = r_d->set_func(real, imag, r_d->precision, r_d->julia_params);
+            int color_seed = r_d->set_func(real, imag, r_d->precision, r_d->j_params);
             int color = ft_color_from_seed(color_seed, r_d->precision);
             mlx_put_pixel(r_d->image, pix.x, pix.y, color);
             pix.y++;
