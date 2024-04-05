@@ -61,11 +61,9 @@ t_W_R_D	*init_all(mlx_t *window, int func_id, int argc, char **argv)
 	{
 		printf("initing julia\n");
 		render_data = init_julia(window, argc, argv);
-
 	}
 	else
 		render_data = init_debug(window, argc, argv);
-
 	if (render_data == NULL)
 		return (NULL);
 	w_r_d = init_W_R_D(window, render_data);
