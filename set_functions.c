@@ -36,7 +36,7 @@ int julia(double real, double imag, int max_precision, void *param)
         i2 = imag * imag;
 
         // The escape condition for the Julia set
-        if (r2 + i2 > 25.0)
+        if (r2 + i2 > 4.0)
             return (iter);
 
         // The main difference for the Julia set is in the iteration formula,
@@ -47,7 +47,8 @@ int julia(double real, double imag, int max_precision, void *param)
     return (max_precision);
 }
 
-int debug_grid(double real, double imag, int max_precision, void *param) {
+int debug_grid(double real, double imag, int max_precision, void *param)
+{
     int real_x3 = (int)(real * 100);
     int imag_x3 = (int)(imag * 100);
 
