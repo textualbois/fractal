@@ -10,11 +10,12 @@ int mandelbrot(double real, double imag, int max_precision, void *param)
     (void)param;
     r = real;
     i = imag;
-    for (iter = 0; iter < max_precision; ++iter)
+    iter = -1;
+    while(iter++ < max_precision)
     {
         double r2 = r * r;
         double i2 = i * i;
-        if (r2 + i2 > 25.0)
+        if (r2 + i2 > 4.0)
             return (iter);
         i = 2 * r * i + imag;
         r = r2 - i2 + real;
@@ -30,7 +31,8 @@ int julia(double real, double imag, int max_precision, void *param)
     t_DoublePair    *c;
 
     c = (t_DoublePair*)param;
-    for (iter = 0; iter < max_precision; ++iter)
+    iter = -1;
+    while (iter++ < max_precision)
     {
         r2 = real * real;
         i2 = imag * imag;
