@@ -19,28 +19,6 @@ void    black_out(t_W_R_D *w_r_d)
     //r_d->set_func(0.0, 0.0, 0);
 }
 
-
-uint32_t	ft_color_from_seed(int iter, int max_iter)
-{
-	if (iter == max_iter)
-	{
-		// Point is in the Mandelbrot set, use background color (black)
-		return 0xFF000000; // Black
-	}
-	else
-	{
-		double t = (double) 2 * iter / max_iter;
-		// Map iter to a color gradient
-		int red = (int)(sin(t * 3.14) * 255);
-		int green = (int)(sin(t * 3.14) * 255);
-		int blue = (int)(sin(t * 3.14) * 255);
-
-		// Combine components into a 32-bit color value (ARGB format)
-		return (255 << 24) | (red << 16) | (green << 8) | blue;
-	}
-}
-
-
 // Function to map pixel coordinates to complex numbers
 void	pixel_to_complex(t_Pix pixel, t_RenderData *r_d, double *real, double *imag)
 {

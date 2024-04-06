@@ -130,9 +130,10 @@ int julia(double real, double imag, int max_precision, void *param);
 
 int debug_grid(double real, double imag, int max_precision, void *param);
 
+//colors.c
+uint32_t ft_color_from_seed(int iter, int max_iter);
 
 //drawer.c
-uint32_t ft_color_from_seed(int iter, int max_iter);
 void pixel_to_complex(t_Pix pixel, t_RenderData *r_d, double *real, double *imag);
 void draw_set(t_RenderData *r_d);
 void black_out(t_W_R_D *w_r_d);
