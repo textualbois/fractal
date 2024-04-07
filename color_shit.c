@@ -25,29 +25,14 @@ void color_shift_hook(void* param)
 
 	wrd =  (t_W_R_D*)param;
 
-	if (mlx_is_key_down(wrd->w, MLX_KEY_R))
-	{
-
-
-	}
-	if (mlx_is_key_down(mlx, MLX_KEY_G))
-	{
-
-
-	}
-	if (mlx_is_key_down(mlx, MLX_KEY_B))
-	{
-
-
-	}
-	if (mlx_is_key_down(mlx, MLX_KEY_A))
-	{
-
-
-	}
-	if (mlx_is_key_down(mlx, MLX_KEY_SPACE))
-	{
-
-
-	}
+	if (mlx_is_key_down(wrd->window, MLX_KEY_R))
+		shift_red(wrd);
+	if (mlx_is_key_down(wrd->window, MLX_KEY_G))
+		shift_green(wrd);
+	if (mlx_is_key_down(wrd->window, MLX_KEY_B))
+		shift_blue(wrd);
+	if (mlx_is_key_down(wrd->window, MLX_KEY_A))
+		shift_a(wrd);
+	if (mlx_is_key_down(wrd->window, MLX_KEY_SPACE))
+		ft_randomize();
 }
