@@ -18,6 +18,13 @@
 #define BPP sizeof(int32_t)
 
 
+typedef struct s_color{
+	int	r;
+	int	g;
+	int	b;
+	int	a;
+}	t_color;
+
 typedef struct s_Pix{
 	int x;
 	int y;
@@ -115,6 +122,10 @@ void move_right(t_RenderData *r_d);
 void move_up(t_RenderData  *r_d);
 void move_down(t_RenderData *r_d);
 
+//color_shift.c
+void color_shift_hook(void* param);
+
+
 //loops_hooks.c
 void    ft_exit_button(void *param);
 bool    bounds_changed(const t_FractalBounds *old_bounds, const t_FractalBounds *new_bounds);
@@ -132,6 +143,7 @@ int debug_grid(double real, double imag, int max_precision, void *param);
 
 //colors.c
 uint32_t ft_color_from_seed(int iter, int max_iter);
+uint32_t ft_color_arr(int i);
 
 //drawer.c
 void pixel_to_complex(t_Pix pixel, t_RenderData *r_d, double *real, double *imag);
