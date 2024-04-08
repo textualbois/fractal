@@ -16,13 +16,16 @@
 #define WIDTH 800
 #define HEIGHT 800
 #define BPP sizeof(int32_t)
-
+#define mandel 1
+#define jul 2
+#define b_ship 3
+#define default_color 0xFF000000
 
 typedef struct s_color{
-	int	r;
-	int	g;
-	int	b;
-	int	a;
+	uint8_t	r;
+	uint8_t	g;
+	uint8_t	b;
+	uint8_t	a;
 }	t_color;
 
 typedef struct s_Pix{
@@ -76,6 +79,7 @@ typedef struct s_RenderData{
 	uint8_t			*pixel_buffer;
 	mlx_image_t		*image;
 	t_DoublePair	*j_params;
+	int				f_code;
 	int				(*set_func)(double, double, int, void*);
 }	t_RenderData;
 
@@ -122,10 +126,6 @@ void move_right(t_RenderData *r_d);
 void move_up(t_RenderData  *r_d);
 void move_down(t_RenderData *r_d);
 
-//color_shift.c
-void color_shift_hook(void* param);
-
-
 //loops_hooks.c
 void    ft_exit_button(void *param);
 bool    bounds_changed(const t_FractalBounds *old_bounds, const t_FractalBounds *new_bounds);
@@ -133,13 +133,23 @@ void    ft_image_shift(void *param);
 void    init_loops_n_hooks(t_W_R_D *wrd);
 void    background_render(void *param);
 
-void ft_black_out_hook(void *param);
+// void ft_black_out_hook(void *param);
 
 //set_functions.c
 int mandelbrot(double real, double imag, int max_precision, void *param);
 int julia(double real, double imag, int max_precision, void *param);
 
 int debug_grid(double real, double imag, int max_precision, void *param);
+
+//color_shift.c
+void color_shift_hook(void* param);
+void ft_apply_color(t_RenderData* r_d, int offset);
+void shift_colors(t_RenderData *r_d, int code);
+
+//color_static.c
+void color_static_hook(void* param);
+void ft_randomize(t_RenderData* r_d);
+
 
 //colors.c
 uint32_t ft_color_from_seed(int iter, int max_iter);

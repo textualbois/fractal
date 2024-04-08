@@ -37,6 +37,10 @@ void    resize_window(int32_t width, int32_t height, void *param)
     t_RenderData *r_d;
     double      dots_pp_x;
     double      dots_pp_y;
+	static int c;
+
+	printf("resizing number %i\n", c);
+	c++;
 
     wrd = (t_W_R_D*)param;
     r_d = wrd->r_data;

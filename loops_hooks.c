@@ -9,14 +9,6 @@ void	ft_exit_button(void *param)
 		mlx_close_window(wrd->window);
 }
 
-void	ft_black_out_hook(void *param)
-{
-	t_W_R_D *wrd;
-
-	wrd = (t_W_R_D *)param;
-	if (mlx_is_key_down(wrd->window, MLX_KEY_R))
-		black_out(wrd);
-}
 
 bool	bounds_changed(const t_FractalBounds *old_bounds, const t_FractalBounds *new_bounds)
 {
@@ -92,9 +84,10 @@ void	init_loops_n_hooks(t_W_R_D *wrd)
 {
 	mlx_loop_hook(wrd->window, ft_exit_button, wrd);
 	mlx_loop_hook(wrd->window, ft_image_shift, wrd);
-	mlx_loop_hook(wrd->window, ft_black_out_hook, wrd);
+	//mlx_loop_hook(wrd->window, ft_black_out_hook, wrd);
 	mlx_scroll_hook(wrd->window, ft_zoom, wrd);
 	mlx_resize_hook(wrd->window, resize_window, wrd);
+	mlx_loop_hook(wrd->window, color_static_hook, wrd);
 	mlx_loop_hook(wrd->window, color_shift_hook, wrd);
 	mlx_loop_hook(wrd->window, background_render, wrd);
 	//mlx_loop_hook(window, ft_zoom, window);

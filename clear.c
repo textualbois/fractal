@@ -10,7 +10,7 @@ void free_RenderData(t_RenderData *render_data)
 {
 	free(render_data->bounds);  // Free the FractalBounds within RenderData
 	clear_background_render(render_data);   // Clear background image data
-	if (render_data->j_params != NULL)
+	if (render_data->f_code == jul)
 		free(render_data->j_params);
 	free(render_data);
 }

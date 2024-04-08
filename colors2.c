@@ -25,7 +25,7 @@ uint32_t ft_color_from_seed(int iter, int max_iter)
 }
 */
 
-static void shift_color(int *color)
+static void shift_color(uint8_t *color)
 {
 	if (*color == 255)
 		*color = 0;
@@ -35,20 +35,20 @@ static void shift_color(int *color)
 
 static void set_rgba(t_color *rgba, int code)
 {
-	if (code == 0)
+	if (code == -1)
 	{
-		rgba->r = 255;
-		rgba->g = 150;
-		rgba->b = 100;
-		rgba->a = 255;
+		rgba->r = (uint8_t)255;
+		rgba->g = (uint8_t)150;
+		rgba->b = (uint8_t)100;
+		rgba->a = (uint8_t)255;
 	}
-	if (code == 'r')
+	if (code == 0)
 		shift_color(&rgba->r);
-	if (code == 'g')
+	if (code == 1)
 		shift_color(&rgba->g);
-	if (code == 'b')
+	if (code == 2)
 		shift_color(&rgba->b);
-	if (code == 'a')
+	if (code == 3)
 		shift_color(&rgba->a);
 
 }
@@ -62,10 +62,13 @@ uint32_t ft_color_from_seed(int iter, int max_iter)
 	else
 	{
 		if (iter == max_iter)
-			return (0xFF000000);
+			return (default_color);
 		else
 		{
-			return ((rgba.r << 24) | (rgba.g << 16) | (rgba.b << 8) | (int)(rgba.a * log(iter + 1) / log(max_iter + iter)));
+			return ((rgba.r << 24) |\
+			 (rgba.g << 16) |\
+			  (rgba.b << 8) |\
+			   (int)(rgba.a * log(iter + 1) / log(max_iter + iter)));
 		}
 	}
 	return (iter);

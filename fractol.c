@@ -27,7 +27,7 @@ static int setup_and_draw(mlx_t *window, int fn_id, int argc, char **argv)
 	w_r_d = init_all(window, fn_id, argc, argv);
 	if (w_r_d == NULL)
 		return (0);
-	ft_color_from_seed(0, -1);
+	ft_color_from_seed(-1, -1);
 	printf("color set ups\n");
 	draw_set(w_r_d->r_data);
 	if (mlx_image_to_window(window, w_r_d->r_data->image, 0, 0) == -1)
