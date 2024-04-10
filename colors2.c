@@ -9,7 +9,7 @@ uint32_t ft_color_from_seed(int iter, int max_iter)
 	else
 	{
 		if (iter == max_iter)
-			return (0xFF000000); // Black
+			return (default_color); // Black
 		else
 		{
 			double t = (double) 4 * iter / max_iter;
@@ -25,15 +25,15 @@ uint32_t ft_color_from_seed(int iter, int max_iter)
 }
 */
 
-static void shift_color(uint8_t *color)
+static uint8_t shift_color(uint8_t color,  double modifier)
 {
-	if (*color == 255)
-		*color = 0;
+	if (color * modifier >= 255)
+		return(0);
 	else
-		*color = *color + 1;
+		return (color + 1);
 }
 
-static void set_rgba(t_color *rgba, int code)
+static void set_rgba(t_color *rgba, int code, double mod)
 {
 	if (code == -1)
 	{
@@ -43,22 +43,25 @@ static void set_rgba(t_color *rgba, int code)
 		rgba->a = (uint8_t)255;
 	}
 	if (code == 0)
-		shift_color(&rgba->r);
+		rgba->r = shift_color(rgba->r, 1);
 	if (code == 1)
-		shift_color(&rgba->g);
+		rgba->g = shift_color(rgba->g, 1);
 	if (code == 2)
-		shift_color(&rgba->b);
+		rgba->b = shift_color(rgba->b, 1);
 	if (code == 3)
-		shift_color(&rgba->a);
+		rgba->a = shift_color(rgba->a, mod);
 
 }
 
 uint32_t ft_color_from_seed(int iter, int max_iter)
 {
 	static t_color rgba;
+	double 			modifier;
 
+
+	modifier = log(iter + 1) / log(max_iter + iter);
 	if (max_iter == -1)
-		set_rgba(&rgba, iter);
+		set_rgba(&rgba, iter, modifier);
 	else
 	{
 		if (iter == max_iter)
@@ -68,7 +71,7 @@ uint32_t ft_color_from_seed(int iter, int max_iter)
 			return ((rgba.r << 24) |\
 			 (rgba.g << 16) |\
 			  (rgba.b << 8) |\
-			   (int)(rgba.a * log(iter + 1) / log(max_iter + iter)));
+			   (int)(rgba.a * modifier));
 		}
 	}
 	return (iter);
@@ -83,7 +86,7 @@ uint32_t ft_color_from_seed(int iter, int max_iter)
 // 	else
 // 	{
 // 		if (iter == max_iter)
-// 			return (0xFF000000);
+// 			return (default_color);
 // 		else
 // 		{
 // 			double t = (double) 4 * iter / max_iter;
@@ -106,7 +109,7 @@ uint32_t ft_color_from_seed(int iter, int max_iter)
 // 	else
 // 	{
 // 		if (iter == max_iter)
-// 			return (0xFF000000); // Black
+// 			return (default_color); // Black
 // 		else
 // 		{
 // 			double t = (double) 4 * iter / max_iter;

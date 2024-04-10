@@ -12,6 +12,8 @@ void free_RenderData(t_RenderData *render_data)
 	clear_background_render(render_data);   // Clear background image data
 	if (render_data->f_code == jul)
 		free(render_data->j_params);
+	if (render_data->iter_count != NULL)
+		clear_iter_data(render_data->iter_count, render_data->Height - 1);
 	free(render_data);
 }
 

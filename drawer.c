@@ -35,24 +35,30 @@ void	draw_set(t_RenderData *r_d)
 	double  real;
 	double  imag;
 	t_Pix   pixel;
-	//  int     precision;
 
-	//precision  = (int)(r_d->precision * r_d->zoom / 100);
-	printf("new render called. bounds (min_x, max_x)(min_i, max_i) (%f, %f)(%f, %f)\n", r_d->bounds->min_r, r_d->bounds->max_r,r_d->bounds->min_i,r_d->bounds->max_i);
+	//printf("new render called. bounds (min_x, max_x)(min_i, max_i) (%f, %f)(%f, %f)\n", r_d->bounds->min_r, r_d->bounds->max_r,r_d->bounds->min_i,r_d->bounds->max_i);
 	pixel.x = 0;
 	while (pixel.x < r_d->Width)
-	{ // goes over x axis pixels
+	{
 		pixel.y = 0;
 		while (pixel.y < r_d->Height)
-		{ // goes over y axis pixels
-			pixel_to_complex(pixel, r_d, &real, &imag);   // takes current pixel (x, y), the bounds of what we are drawing and sets the real and imag vals
-			// (void) max_iter;
-			int color_seed = r_d->set_func(real, imag, r_d->precision, r_d->j_params); // value from 0 to max_iter
-			int color = ft_color_from_seed(color_seed, r_d->precision);
-			mlx_put_pixel(r_d->image, pixel.x, pixel.y, color);
+		{
+			pixel_to_complex(pixel, r_d, &real, &imag);
+			r_d->iter_count[pixel.y][pixel.x] = r_d->set_func(real, imag,\
+			 r_d->precision, r_d->j_params);
+			place_color(r_d, pixel);
 			pixel.y++;
 		}
 		pixel.x++;
 	}
-	//r_d->set_func(0.0, 0.0, 0, 0);
+}
+
+void	place_color(t_RenderData *r_d, t_Pix pos)
+{
+	int color;
+	int	color_seed;
+
+	color_seed = r_d->iter_count[pos.y][pos.x];
+	color = ft_color_from_seed(color_seed, r_d->precision);
+	mlx_put_pixel(r_d->image, pos.x, pos.y, color);
 }

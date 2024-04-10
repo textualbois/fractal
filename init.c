@@ -22,7 +22,8 @@ t_RenderData	*init_rData(t_FractalBounds *bounds, mlx_t *window, void *set_func,
 	render_data = (t_RenderData *)malloc(sizeof(t_RenderData));
 	if (render_data == NULL)
 		return (NULL);
-	if (!(render_data->image = mlx_new_image(window, WIDTH, HEIGHT)))
+	render_data->image = mlx_new_image(window, WIDTH, HEIGHT);
+	if (!(render_data->image))
 	{
 		puts(mlx_strerror(mlx_errno));
 		return (NULL);
@@ -32,6 +33,13 @@ t_RenderData	*init_rData(t_FractalBounds *bounds, mlx_t *window, void *set_func,
 	render_data->precision = precision;
 	render_data->Width = WIDTH;
 	render_data->Height = HEIGHT;
+	render_data->iter_count = iter_data(WIDTH, HEIGHT);
+	if (render_data->iter_count == NULL)
+	{
+		puts(mlx_strerror(mlx_errno));
+		free_RenderData(render_data);
+		return (NULL);
+	}
 	render_data->set_func = set_func;
 	return (render_data);
 }

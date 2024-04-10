@@ -19,7 +19,7 @@
 #define mandel 1
 #define jul 2
 #define b_ship 3
-#define default_color 0xFF000000
+#define default_color 0x000000FF
 
 typedef struct s_color{
 	uint8_t	r;
@@ -75,6 +75,7 @@ typedef struct s_RenderData{
 	bool			render_required;
 	int				render_status;
 
+	int				**iter_count;
 	uint8_t			*buffer_pointer;
 	uint8_t			*pixel_buffer;
 	mlx_image_t		*image;
@@ -99,6 +100,11 @@ t_W_R_D *init_W_R_D(mlx_t *window, t_RenderData *render_data);
 t_RenderData *init_mandelbrot(mlx_t *window, int argc, char **argv);
 t_RenderData *init_julia(mlx_t *window, int argc, char **argv);
 t_RenderData *init_debug(mlx_t *window, int argc, char **argv);
+
+//init_img_meta.c
+int **iter_data(int width, int height);
+int **iter_data_re_alloc(t_RenderData *r_d, t_Pix new_window);
+void clear_iter_data(int **iter_data, int row_max);
 
 //clear.c
 void free_FractalBounds(t_FractalBounds *bounds);
@@ -156,9 +162,10 @@ uint32_t ft_color_from_seed(int iter, int max_iter);
 uint32_t ft_color_arr(int i);
 
 //drawer.c
-void pixel_to_complex(t_Pix pixel, t_RenderData *r_d, double *real, double *imag);
-void draw_set(t_RenderData *r_d);
-void black_out(t_W_R_D *w_r_d);
+void	pixel_to_complex(t_Pix pixel, t_RenderData *r_d, double *real, double *imag);
+void	draw_set(t_RenderData *r_d);
+void	black_out(t_W_R_D *w_r_d);
+void	place_color(t_RenderData *r_d, t_Pix pos);
 
 //delayed-drawer.c
 int init_background_render(t_RenderData *r_d);
