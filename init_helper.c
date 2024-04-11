@@ -24,15 +24,12 @@ t_RenderData	*init_mandelbrot(mlx_t *window, int argc, char **argv)
 
 static void	init_j_params(t_FractalBounds **bounds, t_DoublePair **c, int argc, char **argv)
 {
-	printf("initing julia params\n");
 	*bounds = init_FractalBounds(-2.0, 2.0, -2.0, 2.0);
 	if (*bounds != NULL)
 	{
-		printf("bounds not null\n");
 		*c = (t_DoublePair *)malloc(sizeof(t_DoublePair));
 		if (*c != NULL)
 		{
-			printf("c is good\n");
 			if (argc == 5)
 			{
 				(*c)->x = ft_atod(argv[3]);
@@ -68,7 +65,6 @@ t_RenderData *init_julia(mlx_t *window, int argc, char **argv)
 	init_j_params(&bounds, &c, argc, argv);
 	if (bounds == NULL)
 		return (NULL);
-	printf("j_params inited\n");
 	render_data = init_rData(bounds, window, &julia, precision);
 	if (render_data == NULL)
 	{
@@ -76,7 +72,6 @@ t_RenderData *init_julia(mlx_t *window, int argc, char **argv)
 		free(c);
 		return (NULL);
 	}
-	printf("render_data good\n");
 	render_data->j_params = c;
 	return (render_data);
 }
