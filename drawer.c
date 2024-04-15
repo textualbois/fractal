@@ -1,25 +1,5 @@
 #include "./fractol.h"
 
-void    black_out(t_W_R_D *w_r_d)
-{
-   // double  real;
-    //double  imag;
-   //printf("new render called\n");
-   //int i = 0;
-
-    for (int x = 0; x < WIDTH; ++x) { // goes over x axis pixels
-        for (int y = 0; y < HEIGHT; ++y) { // goes over y axis pixels
-            //pixel_to_complex(x, y, r_d->bounds, &real, &imag);   // takes current pixel (x, y), the bounds of what we are drawing and sets the real and imag vals
-           // (void) max_iter;
-            ///int color_seed = r_d->set_func(real, imag, r_d->precision); // value from 0 to max_iter
-            int color = ft_color_from_seed(1, 1);
-            mlx_put_pixel(w_r_d->r_data->image, x, y, color);
-        }
-    }
-    //r_d->set_func(0.0, 0.0, 0);
-}
-
-// Function to map pixel coordinates to complex numbers
 void	pixel_to_complex(t_Pix pixel, t_RenderData *r_d, double *real, double *imag)
 {
 	t_FractalBounds *bounds;
@@ -30,6 +10,23 @@ void	pixel_to_complex(t_Pix pixel, t_RenderData *r_d, double *real, double *imag
 }
 
 // Function to draw the Mandelbrot set
+void	draw_from_iter_counts(t_RenderData *r_d)
+{
+	t_Pix   pixel;
+
+	pixel.x = 0;
+	while (pixel.x < r_d->Width)
+	{
+		pixel.y = 0;
+		while (pixel.y < r_d->Height)
+		{
+			place_color(r_d, pixel);
+			pixel.y++;
+		}
+		pixel.x++;
+	}
+}
+
 void	draw_set(t_RenderData *r_d)
 {
 	double  real;

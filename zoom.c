@@ -106,15 +106,18 @@ void zoom_out(t_RenderData *r_d, t_Pix cursor)
 
 void down_scale(t_RenderData *r_d, t_PixelBox box, double scale_x, double scale_y)
 {
-    uint8_t         *pixels_copy;
+    int         **pixels_copy;
     t_Pix           dst;
     t_PixDouble     src;
     int             y_whole;
 
-    pixels_copy = (uint8_t*)malloc(BPP * r_d->Width * r_d->Height);
+    dst.y = r_d->Height;
+    dst.x = r_d->Width;
+    pixels_copy = iter_data_copy(r_d);
+    //pixels_copy = (uint8_t*)malloc(BPP * r_d->Width * r_d->Height);
     if (pixels_copy != NULL)
     {
-        ft_memmove(pixels_copy, r_d->image->pixels, BPP * r_d->Width * r_d->Height);
+        //ft_memmove(pixels_copy, r_d->image->pixels, BPP * r_d->Width * r_d->Height);
         dst.y = box.top_y;
         src.y = 0;
         while (dst.y < box.bottom_y)
@@ -124,16 +127,17 @@ void down_scale(t_RenderData *r_d, t_PixelBox box, double scale_x, double scale_
             y_whole = (int)round(src.y);
             while (dst.x < box.right_x)
             {   
-
-                ft_memmove(r_d->image->pixels + ((int)(dst.y * r_d->Width + dst.x) * BPP),\
-                    pixels_copy + ((int)(y_whole * r_d->Width + (int)round(src.x)) * BPP), BPP);
+                r_d->iter_count[dst.y][dst.x] = pixels_copy[y_whole][(int)round(src.x)];
+   //             ft_memmove(r_d->image->pixels + ((int)(dst.y * r_d->Width + dst.x) * BPP),\
+     //               pixels_copy + ((int)(y_whole * r_d->Width + (int)round(src.x)) * BPP), BPP);
                 dst.x++;
                 src.x += scale_x;
             }
             dst.y++;
             src.y += scale_y;
         }
-        free(pixels_copy);
+        printf("number of rows is %i\n", r_d->Height);
+        clear_iter_data(pixels_copy, r_d->Height - 1);
     }
     else
         draw_set(r_d);

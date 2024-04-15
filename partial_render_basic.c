@@ -23,7 +23,7 @@ void outer_render(t_RenderData *r_d, t_PixelBox *rendered_pixels)
     double  real;
     double  imag;
     t_Pix   pix;
-    
+
     pix.x = 0;
     while (pix.x < r_d->Width)
     {
@@ -36,8 +36,8 @@ void outer_render(t_RenderData *r_d, t_PixelBox *rendered_pixels)
                 pixel_to_complex(pix, r_d, &real, &imag);
 			    r_d->iter_count[pix.y][pix.x] = r_d->set_func(real, imag,\
 			        r_d->precision, r_d->j_params);
-                place_color(r_d, pix);
             }
+            place_color(r_d, pix);    
             pix.y++;
         }
         pix.x++;

@@ -7,7 +7,6 @@ void move_right(t_RenderData *r_d)
    // double render_offset;
     t_PixelBox rendered_pixels;
 
-
     r_delta = (r_d->bounds->max_r - r_d->bounds->min_r) * 0.02;
     shift_offset = r_d->Width * 0.02;
    // render_offset = r_d->bounds->max_r - r_delta;

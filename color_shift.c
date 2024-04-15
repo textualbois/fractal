@@ -29,7 +29,7 @@ void ft_apply_color(t_RenderData* r_d, int offset)
 		while (pix.y < r_d->Height)
 		{
 			p = img->pixels + ((pix.y * r_d->Width + pix.x) * BPP);
-			if ((uint32_t)*p != default_color)
+			if (r_d->iter_count[pix.y][pix.x] != r_d->precision)
 				shift_color(&(p[offset]));
 			pix.y++;
 		}
@@ -44,7 +44,8 @@ void shift_colors(t_RenderData *r_d, int code)
 
 	clear_background_render(r_d);
 	ft_color_from_seed(code, -1);
-	ft_apply_color(r_d, code);
+	//ft_apply_color(r_d, code);
+	draw_from_iter_counts(r_d);
 }
 
 void color_shift_hook(void* param)

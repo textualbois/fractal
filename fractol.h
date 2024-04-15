@@ -105,6 +105,7 @@ t_RenderData *init_debug(mlx_t *window, int argc, char **argv);
 int **iter_data(int width, int height);
 int **iter_data_re_alloc(t_RenderData *r_d, t_Pix new_window);
 void clear_iter_data(int **iter_data, int row_max);
+int **iter_data_copy(t_RenderData *r_d);
 
 //clear.c
 void free_FractalBounds(t_FractalBounds *bounds);
@@ -163,8 +164,8 @@ uint32_t ft_color_arr(int i);
 
 //drawer.c
 void	pixel_to_complex(t_Pix pixel, t_RenderData *r_d, double *real, double *imag);
+void	draw_from_iter_counts(t_RenderData *r_d);
 void	draw_set(t_RenderData *r_d);
-void	black_out(t_W_R_D *w_r_d);
 void	place_color(t_RenderData *r_d, t_Pix pos);
 
 //delayed-drawer.c
