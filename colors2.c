@@ -1,29 +1,4 @@
 #include "./fractol.h"
-/*
-uint32_t ft_color_from_seed(int iter, int max_iter)
-{
-	static int color_offset;
-
-	if (max_iter < 0)
-		color_offset = iter;
-	else
-	{
-		if (iter == max_iter)
-			return (default_color); // Black
-		else
-		{
-			double t = (double) 4 * iter / max_iter;
-			// Map iter to a color gradient
-			int red = (int)(sin(t * 3.14) * 255);
-			int green = (int)(sin(t * 3.14) * 255);
-			int blue = (int)(sin(t * 3.14) * 255);
-		// Combine components into a 32-bit color value (ARGB format)
-			return (255 << 24) | (red << 16) | (green << 8) | blue;
-		}
-	}
-	return (iter);
-}
-*/
 
 static uint8_t shift_color(uint8_t color,  double modifier)
 {
@@ -33,7 +8,7 @@ static uint8_t shift_color(uint8_t color,  double modifier)
 		return (color + 1);
 }
 
-static void set_rgba(t_color *rgba, int code, double mod)
+static void set_rgba(t_color *rgba, int code)
 {
 	if (code == -1)
 	{
@@ -49,7 +24,7 @@ static void set_rgba(t_color *rgba, int code, double mod)
 	if (code == 2)
 		rgba->b = shift_color(rgba->b, 1);
 	if (code == 3)
-		rgba->a = shift_color(rgba->a, mod);
+		rgba->a = shift_color(rgba->a, 1);
 
 }
 
@@ -61,7 +36,7 @@ uint32_t ft_color_from_seed(int iter, int max_iter)
 
 	modifier = log(iter + 1) / log(max_iter + iter);
 	if (max_iter == -1)
-		set_rgba(&rgba, iter, modifier);
+		set_rgba(&rgba, iter);
 	else
 	{
 		if (iter == max_iter)
