@@ -1,10 +1,5 @@
 #include "./fractol.h"
 
-// static uint32_t ft_pixel(uint32_t r, uint32_t g, uint32_t b, uint32_t a)
-// {
-// 	return (r << 24 | g << 16 | b << 8 | a);
-// }
-
 static void shift_color(uint8_t *color)
 {
 	if (*color == 255)
@@ -13,13 +8,11 @@ static void shift_color(uint8_t *color)
 		*color = *color + 1;
 }
 
-
 void ft_apply_color(t_RenderData* r_d, int offset)
 {
 	mlx_image_t	*img;
 	t_Pix		pix;
 	uint8_t 	*p;
-	//uint8_t		p_lil;
 
 	img = r_d->image;
 	pix.x = 0;
@@ -37,14 +30,10 @@ void ft_apply_color(t_RenderData* r_d, int offset)
 	}
 }
 
-
-
 void shift_colors(t_RenderData *r_d, int code)
 {
-
 	clear_background_render(r_d);
 	ft_color_from_seed(code, -1);
-	//ft_apply_color(r_d, code);
 	draw_from_iter_counts(r_d);
 }
 

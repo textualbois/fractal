@@ -63,18 +63,15 @@ t_W_R_D	*init_all(mlx_t *window, int func_id, int argc, char **argv)
 	t_RenderData	*render_data;
 	t_W_R_D			*w_r_d;
 
-	if (func_id == mandel)
-		render_data = init_mandelbrot(window, argc, argv);
+	if (func_id == mandel || func_id == b_ship)
+		render_data = init_mandelbrot(window, argc, argv, func_id);
 	else if (func_id == jul)
-	{
-		printf("initing julia\n");
 		render_data = init_julia(window, argc, argv);
-	}
 	else
 		render_data = init_debug(window, argc, argv);
 	if (render_data == NULL)
 		return (NULL);
-		render_data->f_code = func_id;
+	render_data->f_code = func_id;
 	w_r_d = init_W_R_D(window, render_data);
 	if (w_r_d == NULL)
 		free_RenderData(render_data);

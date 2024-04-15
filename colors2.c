@@ -33,7 +33,6 @@ uint32_t ft_color_from_seed(int iter, int max_iter)
 	static t_color rgba;
 	double 			modifier;
 
-
 	modifier = log(iter + 1) / log(max_iter + iter);
 	if (max_iter == -1)
 		set_rgba(&rgba, iter);

@@ -49,6 +49,30 @@ int julia(double real, double imag, int max_precision, void *param)
     return (max_precision);
 }
 
+int burning_ship(double real, double imag, int max_precision, void *param)
+{
+    int     iter;
+    double  r, i;
+    double  r2, i2;
+
+    (void)param;
+    r = real;
+    i = imag;
+    iter = -1;
+    while (iter++ < max_precision)
+    {
+        r2 = r * r;
+        i2 = i * i;
+        if (r2 + i2 > 32.0)
+            return (iter);
+        r = fabs(r);
+        i = fabs(i);
+        i = 2 * r * i + imag;
+        r = r * r - i * i + real;
+    }
+    return (max_precision);
+}
+
 int debug_grid(double real, double imag, int max_precision, void *param)
 {
     int real_x3 = (int)(real * 100);

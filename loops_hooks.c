@@ -87,6 +87,8 @@ void	init_loops_n_hooks(t_W_R_D *wrd)
 	//mlx_loop_hook(wrd->window, ft_black_out_hook, wrd);
 	mlx_scroll_hook(wrd->window, ft_zoom, wrd);
 	mlx_resize_hook(wrd->window, resize_window, wrd);
+	mlx_loop_hook(wrd->window, max_c_wrapper, wrd);
+	mlx_loop_hook(wrd->window, color_psy_hook, wrd);
 	mlx_loop_hook(wrd->window, color_static_hook, wrd);
 	mlx_loop_hook(wrd->window, color_shift_hook, wrd);
 	mlx_loop_hook(wrd->window, background_render, wrd);

@@ -11,6 +11,8 @@
 //#define render_required 1
 #define render_not_required 2
 
+#define DECREMENT_MAX_C 1
+#define GIVE_MAX_C 0
 #define background_render_not_started 0
 #define background_render_started 2
 #define WIDTH 800
@@ -97,7 +99,7 @@ t_RenderData *init_rData(t_FractalBounds *bounds, mlx_t *window, void *set_func,
 t_W_R_D *init_W_R_D(mlx_t *window, t_RenderData *render_data);
 
 //init_helper.c
-t_RenderData *init_mandelbrot(mlx_t *window, int argc, char **argv);
+t_RenderData *init_mandelbrot(mlx_t *window, int argc, char **argv, int f_id);
 t_RenderData *init_julia(mlx_t *window, int argc, char **argv);
 t_RenderData *init_debug(mlx_t *window, int argc, char **argv);
 
@@ -145,7 +147,7 @@ void    background_render(void *param);
 //set_functions.c
 int mandelbrot(double real, double imag, int max_precision, void *param);
 int julia(double real, double imag, int max_precision, void *param);
-
+int burning_ship(double real, double imag, int max_precision, void *param);
 int debug_grid(double real, double imag, int max_precision, void *param);
 
 //color_shift.c
@@ -156,6 +158,12 @@ void shift_colors(t_RenderData *r_d, int code);
 //color_static.c
 void color_static_hook(void* param);
 void ft_randomize(t_RenderData* r_d);
+
+//psy_color.c
+void    max_c_wrapper(void *param);
+int		ft_max_c(int signal);
+void	color_psy_hook(void* param);
+void	ft_psy_flow(t_RenderData* r_d, int activity_status, int max_activity_status);
 
 
 //colors.c

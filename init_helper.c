@@ -1,19 +1,22 @@
 #include "./fractol.h"
 
-t_RenderData	*init_mandelbrot(mlx_t *window, int argc, char **argv)
+t_RenderData	*init_mandelbrot(mlx_t *window, int argc, char **argv, int f_id)
 {
 	t_FractalBounds	*bounds;
 	t_RenderData	*render_data;
 	int				precision;
 
-	bounds = init_FractalBounds(-2.0, 2.0, -2.0, 2.0);
+	bounds = init_FractalBounds(-3.0, 3.0, -2.0, 2.0);
 	if (!bounds)
 		return (NULL);
 	if (argc == 3)
 		precision = ft_atoi(argv[2]);
 	else
 		precision = 300;
-	render_data = init_rData(bounds, window, &mandelbrot, precision);
+	if (f_id == mandel)
+		render_data = init_rData(bounds, window, &mandelbrot, precision);
+	else
+		render_data = init_rData(bounds, window, &burning_ship, precision);
 	if (!render_data)
 	{
 		free(bounds);
