@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:45:00 by isemin            #+#    #+#             */
-/*   Updated: 2023/11/15 01:24:00 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/20 19:24:22 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdio.h>
 
 typedef struct s_flags
