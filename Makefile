@@ -15,9 +15,13 @@ LIBFT_PATH = ./libft/
 LIBFT_INCL = -I $(LIBFT_PATH)
 LIBFT_LIB = $(LIBFT_PATH)libft.a
 
+FT_PRINTF_PATH = ./ft_printf/
+FT_PRINTF_INCL = -I $(FT_PRINTF_PATH)
+FT_PRINTF_LIB = $(FT_PRINTF_PATH)ft_printf.a
+
 MLX_LIB = -L$(MLX_PATH)build -lmlx42
 GLFW_LIB = -L"/usr/local/Cellar/glfw/3.3.9/lib/" -lglfw
-LIBS = $(MLX_LIB) $(GLFW_LIB) -L$(LIBFT_PATH) -lft -lm
+LIBS = $(MLX_LIB) $(GLFW_LIB) -L$(LIBFT_PATH) -lft -L$(FT_PRINTF_PATH) -lftprintf -lm
 
 FRAMEWORKS = -framework OpenGL -framework IOKit -framework AppKit
 DEPENDENCIES = $(LIBS) $(FRAMEWORKS)
@@ -29,12 +33,16 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-all: $(LIBFT_LIB) $(MLX) $(NAME)
+all: $(LIBFT_LIB) $(FT_PRINTF_LIB) $(MLX) $(NAME)
 	@echo "all DONE"
 
 $(LIBFT_LIB):
 	@make -C $(LIBFT_PATH)
 	@echo "LIBFT DONE"
+
+$(FT_PRINTF_LIB):
+	@make -C $(FT_PRINTF_PATH)
+	@echo "FT_PRINTF DONE"
 
 $(MLX):
 	@cmake $(MLX_PATH) -B $(MLX_PATH)/build && make -C $(MLX_PATH)/build -j4
@@ -56,12 +64,14 @@ $(OBJ_DIR):
 clean:
 	rm -rf $(OBJ_DIR)
 	@make clean -C $(LIBFT_PATH)
+	@make clean -C $(FT_PRINTF_PATH)
 	@echo "CLEAN DONE"
 
 fclean: clean
 	rm -f $(NAME)
 	rm -rf $(MLX_PATH)build
 	@make fclean -C $(LIBFT_PATH)
+	@make fclean -C $(FT_PRINTF_PATH)
 	@echo "fclean DONE"
 
 re: fclean all
