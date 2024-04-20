@@ -6,7 +6,7 @@ t_RenderData	*init_mandelbrot(mlx_t *window, int argc, char **argv, int f_id)
 	t_RenderData	*render_data;
 	int				precision;
 
-	bounds = init_FractalBounds(-3.0, 3.0, -2.0, 2.0);
+	bounds = init_FractalBounds(-2.0, 2.0, -2.0, 2.0);
 	if (!bounds)
 		return (NULL);
 	if (argc == 3)
