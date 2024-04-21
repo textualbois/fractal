@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:49:06 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:45:29 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	outer_render(t_RData *r_d, t_PixBox *rendered_pix)
 	t_Pix	pix;
 
 	pix.x = 0;
-	while (pix.x < r_d->Width)
+	while (pix.x < r_d->width)
 	{
 		pix.y = 0;
-		while (pix.y < r_d->Height)
+		while (pix.y < r_d->height)
 		{
 			if (pix.x <= rendered_pix->left_x || \
 				pix.x >= rendered_pix->right_x || \
@@ -65,7 +65,7 @@ void	buffer_segment(t_RData *r_d, t_PixBox *pixel_bounds)
 			r_d->max_iter, r_d->j_params);
 			color = ft_color_from_seed(color_seed, r_d->max_iter);
 			r_d->buffer_pointer = r_d->pixel_buffer + \
-			((pix.y * r_d->Width + pix.x) * BPP);
+			((pix.y * r_d->width + pix.x) * BPP);
 			mlx_store_pixel(r_d->buffer_pointer, color);
 			pix.y++;
 		}

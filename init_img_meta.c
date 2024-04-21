@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:40:48 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 17:43:54 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,15 @@ int	**iter_data_re_alloc(t_RData *r_d, t_Pix new_window)
 	if (iter_dat == NULL)
 		return (NULL);
 	i.y = 0;
-	while (i.y < new_window.y && i.y < r_d->Height)
+	while (i.y < new_window.y && i.y < r_d->height)
 	{
 		i.x = 0;
-		while (i.x < new_window.x && i.x < r_d->Width)
+		while (i.x < new_window.x && i.x < r_d->width)
 			i.x++;
 		ft_memmove(iter_dat[i.y], r_d->iter_count[i.y], i.x * sizeof(int));
 		i.y++;
 	}
-	clear_iter_data(r_d->iter_count, r_d->Height - 1);
+	clear_iter_data(r_d->iter_count, r_d->height - 1);
 	return (iter_dat);
 }
 
@@ -82,13 +82,13 @@ int	**iter_data_copy(t_RData *r_d)
 	int		**iter_dat;
 	t_Pix	i;
 
-	iter_dat = iter_data(r_d->Width, r_d->Height);
+	iter_dat = iter_data(r_d->width, r_d->height);
 	if (iter_dat == NULL)
 		return (NULL);
 	i.y = 0;
-	while (i.y < r_d->Height)
+	while (i.y < r_d->height)
 	{
-		i.x = r_d->Height;
+		i.x = r_d->height;
 		ft_memmove(iter_dat[i.y], r_d->iter_count[i.y], i.x * sizeof(int));
 		i.y++;
 	}

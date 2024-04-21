@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:23:34 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:37:29 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ void	zoom_in(t_RData *r_d, t_Pix cursor)
 	double		dots_pp_x;
 	double		dots_pp_y;
 
-	dots_pp_x = (r_d->bounds->max_r - r_d->bounds->min_r) / r_d->Width;
-	dots_pp_y = (r_d->bounds->max_i - r_d->bounds->min_i) / r_d->Height;
+	dots_pp_x = (r_d->bounds->max_r - r_d->bounds->min_r) / r_d->width;
+	dots_pp_y = (r_d->bounds->max_i - r_d->bounds->min_i) / r_d->height;
 	r_d->bounds_temp = *(r_d->bounds);
 	rendered_pixels = get_inner_box_from_pixels(r_d, cursor);
 	r_d->zoom /= (0.95 * 0.95);
 	r_d->bounds->min_r += rendered_pixels.left_x * dots_pp_x;
-	r_d->bounds->max_r -= ((double)(r_d->Width - rendered_pixels.right_x)) \
+	r_d->bounds->max_r -= ((double)(r_d->width - rendered_pixels.right_x)) \
 	* dots_pp_x;
 	r_d->bounds->min_i += rendered_pixels.top_y * dots_pp_y;
-	r_d->bounds->max_i -= ((double)(r_d->Height - rendered_pixels.bottom_y)) \
+	r_d->bounds->max_i -= ((double)(r_d->height - rendered_pixels.bottom_y)) \
 	* dots_pp_y;
 	stretch(r_d, rendered_pixels, ((double)(rendered_pixels.right_x - \
-	rendered_pixels.left_x) / (double)r_d->Width), \
+	rendered_pixels.left_x) / (double)r_d->width), \
 	((double)(rendered_pixels.bottom_y - rendered_pixels.top_y) \
-	/ (double)r_d->Height));
+	/ (double)r_d->height));
 }
 
 void	stretch(t_RData *r_d, t_PixBox box, double scale_x, double scale_y)
@@ -42,21 +42,21 @@ void	stretch(t_RData *r_d, t_PixBox box, double scale_x, double scale_y)
 	t_PixDouble	src;
 	int			y_whole;
 
-	pixels_copy = (uint8_t *)malloc(BPP * r_d->Width * r_d->Height);
+	pixels_copy = (uint8_t *)malloc(BPP * r_d->width * r_d->height);
 	if (pixels_copy != NULL)
 	{
-		ft_memmove(pixels_copy, r_d->image->pixels, BPP * r_d->Width * r_d->Height);
+		ft_memmove(pixels_copy, r_d->image->pixels, BPP * r_d->width * r_d->height);
 		dst.y = 0;
 		src.y = box.top_y;
-		while (dst.y < r_d->Height)
+		while (dst.y < r_d->height)
 		{
 			dst.x = 0;
 			src.x = box.left_x;
 			y_whole = (int)round(src.y);
-			while (dst.x < r_d->Width)
+			while (dst.x < r_d->width)
 			{
-				ft_memmove(r_d->image->pixels + ((int)(dst.y * r_d->Width + dst.x) * BPP), \
-				pixels_copy + ((int)(y_whole * r_d->Width + (int)round(src.x)) * BPP), BPP);
+				ft_memmove(r_d->image->pixels + ((int)(dst.y * r_d->width + dst.x) * BPP), \
+				pixels_copy + ((int)(y_whole * r_d->width + (int)round(src.x)) * BPP), BPP);
 				dst.x++;
 				src.x += scale_x;
 			}
@@ -84,13 +84,13 @@ void	zoom_out(t_RData *r_d, t_Pix cursor)
 	r_d->zoom *= (0.95 * 0.95);
 	r_d->bounds->min_r -= rendered_pixels.left_x * dots_pp_x;
 	r_d->bounds->max_r += ((double) \
-	(r_d->Width - rendered_pixels.right_x)) * dots_pp_x;
+	(r_d->width - rendered_pixels.right_x)) * dots_pp_x;
 	r_d->bounds->min_i -= rendered_pixels.top_y * dots_pp_y;
 	r_d->bounds->max_i += ((double) \
-	(r_d->Height - rendered_pixels.bottom_y)) * dots_pp_y;
-	down_scale(r_d, rendered_pixels, ((double)r_d->Width) / \
+	(r_d->height - rendered_pixels.bottom_y)) * dots_pp_y;
+	down_scale(r_d, rendered_pixels, ((double)r_d->width) / \
 	(double)(rendered_pixels.right_x - rendered_pixels.left_x), \
-	((double)r_d->Height) / \
+	((double)r_d->height) / \
 	(double)(rendered_pixels.bottom_y - rendered_pixels.top_y));
 	outer_render(r_d, &rendered_pixels);
 }
@@ -102,8 +102,8 @@ void	down_scale(t_RData *r_d, t_PixBox box, double scale_x, double scale_y)
 	t_PixDouble	src;
 	int			y_whole;
 
-	dst.y = r_d->Height;
-	dst.x = r_d->Width;
+	dst.y = r_d->height;
+	dst.x = r_d->width;
 	pixels_copy = iter_data_copy(r_d);
 	if (pixels_copy != NULL)
 	{
@@ -124,7 +124,7 @@ void	down_scale(t_RData *r_d, t_PixBox box, double scale_x, double scale_y)
 			dst.y++;
 			src.y += scale_y;
 		}
-		clear_iter_data(pixels_copy, r_d->Height - 1);
+		clear_iter_data(pixels_copy, r_d->height - 1);
 	}
 	else
 		draw_set(r_d);

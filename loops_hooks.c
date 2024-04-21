@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   loops_hooks.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/21 17:46:50 by isemin            #+#    #+#             */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./fractol.h"
 
 void	ft_exit_button(void *param)
@@ -57,7 +69,7 @@ void	background_render(void *param)
 		if (wrd->r_data->render_status == BACKGROUND_RENDER_STARTED)
 		{
 			row_completed = continue_background_render(wrd->r_data);
-			if (row_completed == wrd->r_data->Height)
+			if (row_completed == wrd->r_data->height)
 				complete_render(wrd->r_data);
 		}
 	}

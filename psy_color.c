@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:00:39 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:07:38 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	ft_psy_flow(t_RData *r_d, int c_code, int max_c)
 	t_color		rgba;
 
 	pix.x = 0;
-	while (pix.x < r_d->Width)
+	while (pix.x < r_d->width)
 	{
 		pix.y = 0;
-		while (pix.y < r_d->Height)
+		while (pix.y < r_d->height)
 		{
-			p = r_d->image->pixels + ((pix.y * r_d->Width + pix.x) * BPP);
+			p = r_d->image->pixels + ((pix.y * r_d->width + pix.x) * BPP);
 			grouping_factor = (r_d->iter_count[pix.y][pix.x] + c_code) % max_c;
 			rgba.r = (int)(127.5 * (sin(grouping_factor * 0.2) + 1));
 			rgba.g = (int)(127.5 * (cos(grouping_factor * 0.2) + 1));

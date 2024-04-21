@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:34:42 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 17:37:31 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	init_background_render(t_RData *r_d)
     //     printf("oops, pixel buffer should be null\n");
     //     clear_background_render(r_d);
     // }
-    // r_d->pixel_buffer = (uint8_t*)malloc(BPP * r_d->Width * r_d->Height);
+    // r_d->pixel_buffer = (uint8_t*)malloc(BPP * r_d->width * r_d->height);
     // if (r_d->pixel_buffer != NULL)
     // {
 	//    r_d->buffer_pointer = r_d->pixel_buffer;
-	return (background_render_started);
+	return (BACKGROUND_RENDER_STARTED);
     // }
     // return (background_render_not_started);
 }
@@ -44,7 +44,7 @@ int	continue_background_render(t_RData *r_d)
 		segment.top_y = pix.y;
 		segment.bottom_y = pix.y + 1;
 		segment.left_x = pix.x;
-		segment.right_x = r_d->Width;
+		segment.right_x = r_d->width;
 		draw_segment(r_d, &segment);
 		pix.y++;
 	}

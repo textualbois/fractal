@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:37:51 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:10:38 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	pixel_to_complex(t_Pix pixel, t_RData *r_d, double *real, double *imag)
 	t_bounds	*bounds;
 
 	bounds = r_d->bounds;
-	*real = bounds->min_r + (pixel.x / (double)r_d->Width) \
+	*real = bounds->min_r + (pixel.x / (double)r_d->width) \
 	* (bounds->max_r - bounds->min_r);
-	*imag = bounds->min_i + (pixel.y / (double)r_d->Height) \
+	*imag = bounds->min_i + (pixel.y / (double)r_d->height) \
 	* (bounds->max_i - bounds->min_i);
 }
 
@@ -29,10 +29,10 @@ void	draw_from_iter_counts(t_RData *r_d)
 	t_Pix	pixel;
 
 	pixel.x = 0;
-	while (pixel.x < r_d->Width)
+	while (pixel.x < r_d->width)
 	{
 		pixel.y = 0;
-		while (pixel.y < r_d->Height)
+		while (pixel.y < r_d->height)
 		{
 			place_color(r_d, pixel);
 			pixel.y++;
@@ -49,10 +49,10 @@ void	draw_set(t_RData *r_d)
 
 	//printf("new render called. bounds (min_x, max_x)(min_i, max_i) (%f, %f)(%f, %f)\n", r_d->bounds->min_r, r_d->bounds->max_r,r_d->bounds->min_i,r_d->bounds->max_i);
 	pixel.x = 0;
-	while (pixel.x < r_d->Width)
+	while (pixel.x < r_d->width)
 	{
 		pixel.y = 0;
-		while (pixel.y < r_d->Height)
+		while (pixel.y < r_d->height)
 		{
 			pixel_to_complex(pixel, r_d, &real, &imag);
 			r_d->iter_count[pixel.y][pixel.x] = r_d->set_f(real, imag, \

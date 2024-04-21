@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:18:43 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:20:34 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	shift_pixels_x_l(t_RData *r_d, int shift_offset)
 	int	y;
 
 	y = 0;
-	while (y < r_d->Height)
+	while (y < r_d->height)
 	{
 		ft_memmove(r_d->iter_count[y],\
 			r_d->iter_count[y] + shift_offset,\
-			(r_d->Width - shift_offset) * sizeof(int));
+			(r_d->width - shift_offset) * sizeof(int));
 		y++;
 	}
 }
@@ -33,11 +33,11 @@ void	shift_pixels_x_r(t_RData *r_d, int shift_offset)
 	int	y;
 
 	y = 0;
-	while (y < r_d->Height)
+	while (y < r_d->height)
 	{
 		ft_memmove(r_d->iter_count[y] + shift_offset, \
 			r_d->iter_count[y],\
-			(r_d->Width - shift_offset) * sizeof(int));
+			(r_d->width - shift_offset) * sizeof(int));
 		y++;
 	}
 }
@@ -48,11 +48,11 @@ void	shift_pixels_y_u(t_RData *r_d, int shift_offset)
 	int	y;
 
 	y = 0;
-	while (y + shift_offset < r_d->Height)
+	while (y + shift_offset < r_d->height)
 	{
 		ft_memmove(r_d->iter_count[y],\
 			r_d->iter_count[y + shift_offset], \
-			r_d->Width * sizeof(int));
+			r_d->width * sizeof(int));
 		y++;
 	}
 }
@@ -62,12 +62,12 @@ void	shift_pixels_y_d(t_RData *r_d, int shift_offset)
 {
 	int	y;
 
-	y = r_d->Height - 1;
+	y = r_d->height - 1;
 	while (y - shift_offset >= 0)
 	{
 		ft_memmove(r_d->iter_count[y],\
 			r_d->iter_count[y - shift_offset], \
-			r_d->Width * sizeof(int));
+			r_d->width * sizeof(int));
 		y--;
 	}
 }

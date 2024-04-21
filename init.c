@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:08:48 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:13:22 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ t_RData	*init_rdata(t_bounds *bounds, mlx_t *window, void *set_f, int max_iter)
 	render_data->bounds = bounds;
 	render_data->zoom = 1.0;
 	render_data->max_iter = max_iter;
-	render_data->Width = WIDTH;
-	render_data->Height = HEIGHT;
+	render_data->width = WIDTH;
+	render_data->height = HEIGHT;
 	render_data->iter_count = iter_data(WIDTH, HEIGHT);
 	if (render_data->iter_count == NULL)
 	{

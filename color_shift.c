@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:30:09 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 17:31:11 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	ft_apply_color(t_RData *r_d, int offset)
 
 	img = r_d->image;
 	pix.x = 0;
-	while (pix.x < r_d->Width)
+	while (pix.x < r_d->width)
 	{
 		pix.y = 0;
-		while (pix.y < r_d->Height)
+		while (pix.y < r_d->height)
 		{
-			p = img->pixels + ((pix.y * r_d->Width + pix.x) * BPP);
+			p = img->pixels + ((pix.y * r_d->width + pix.x) * BPP);
 			if (r_d->iter_count[pix.y][pix.x] != r_d->max_iter)
 				shift_color(&(p[offset]));
 			pix.y++;

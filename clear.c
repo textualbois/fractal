@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 19:47:32 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:10:38 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_rdata(t_RData *render_data)
 	if (render_data->f_code == JUL)
 		free(render_data->j_params);
 	if (render_data->iter_count != NULL)
-		clear_iter_data(render_data->iter_count, render_data->Height - 1);
+		clear_iter_data(render_data->iter_count, render_data->height - 1);
 	free(render_data);
 }
 
