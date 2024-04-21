@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:18:07 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:18:33 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:43:55 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	burning_ship(double real, double imag, int max_max_iter, void *param)
 	double	r;
 	double	i;
 	double	r2;
-	doble	i2;
+	double	i2;
 
 	(void)param;
 	r = real;
