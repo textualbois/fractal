@@ -70,8 +70,8 @@ typedef struct s_RData{
 	t_bounds	bounds_temp;
 	double		zoom;
 	int			max_iter;
-	int			Width;
-	int			Height;
+	int			width;
+	int			height;
 
 	int			block_render;
 	bool		render_required;
@@ -103,15 +103,15 @@ t_RData		*init_julia(mlx_t *window, int argc, char **argv);
 t_RData		*init_debug(mlx_t *window, int argc, char **argv);
 
 //init_img_meta.c
-int **iter_data(int width, int height);
-int **iter_data_re_alloc(t_RData *r_d, t_Pix new_window);
-void clear_iter_data(int **iter_data, int row_max);
-int **iter_data_copy(t_RData *r_d);
+int			**iter_data(int width, int height);
+int			**iter_data_re_alloc(t_RData *r_d, t_Pix new_window);
+void		clear_iter_data(int **iter_data, int row_max);
+int			**iter_data_copy(t_RData *r_d);
 
 //clear.c
-void free_fbounds(t_bounds *bounds);
-void free_rdata(t_RData *render_data);
-void free_w_r_d(t_W_R_D *w_r_d);
+void		free_fbounds(t_bounds *bounds);
+void		free_rdata(t_RData *render_data);
+void		free_w_r_d(t_W_R_D *w_r_d);
 
 /*
 //zoom.c
@@ -122,88 +122,87 @@ void ft_zoom(double x_delta, double y_delta, void *param);
 */
 
 //zoom.c
-void	zoom_in(t_RData *r_d, t_Pix cursor);
-void	stretch(t_RData *r_d, t_PixBox box, double scale_x, double scale_y);
-void	zoom_out(t_RData *r_d, t_Pix cursor);
-void	down_scale(t_RData *r_d, t_PixBox box, double scale_x, double scale_y);
-void	ft_zoom(double x_delta, double y_delta, void *param);
+void		zoom_in(t_RData *r_d, t_Pix cursor);
+void		stretch(t_RData *r_d, t_PixBox box, double scale_x, double scale_y);
+void		zoom_out(t_RData *r_d, t_Pix cursor);
+void		down_scale(t_RData *r_d, t_PixBox box, double scale_x, double scale_y);
+void		ft_zoom(double x_delta, double y_delta, void *param);
 
 //mover.c
-void	move_left(t_RData *r_d);
-void	move_right(t_RData *r_d);
-void	move_up(t_RData *r_d);
-void	move_down(t_RData *r_d);
+void		move_left(t_RData *r_d);
+void		move_right(t_RData *r_d);
+void		move_up(t_RData *r_d);
+void		move_down(t_RData *r_d);
 
 //loops_hooks.c
-void	ft_exit_button(void *param);
-bool	bounds_changed(const t_bounds *old_bounds, const t_bounds *new_bounds);
-void	ft_image_shift(void *param);
-void	init_loops_n_hooks(t_W_R_D *wrd);
-void	background_render(void *param);
+void		ft_exit_button(void *param);
+void		ft_image_shift(void *param);
+void		init_loops_n_hooks(t_W_R_D *wrd);
+void		background_render(void *param);
 
 // void ft_black_out_hook(void *param);
 
 //set_ftions.c
-int		mandelbrot(double real, double imag, int max_max_iter, void *param);
-int		julia(double real, double imag, int max_max_iter, void *param);
-int		burning_ship(double real, double imag, int max_max_iter, void *param);
-int		debug_grid(double real, double imag, int max_max_iter, void *param);
+int			mandelbrot(double real, double imag, int max_max_iter, void *param);
+int			julia(double real, double imag, int max_max_iter, void *param);
+int			burning_ship(double real, double imag, int max_max_iter, void *param);
+int			debug_grid(double real, double imag, int max_max_iter, void *param);
 
 //color_shift.c
-void	color_shift_hook(void *param);
-void	ft_apply_color(t_RData *r_d, int offset);
-void	shift_colors(t_RData *r_d, int code);
+void		color_shift_hook(void *param);
+void		ft_apply_color(t_RData *r_d, int offset);
+void		shift_colors(t_RData *r_d, int code);
 
 //color_static.c
-void	color_static_hook(void *param);
-void	ft_randomize(t_RData *r_d);
+void		color_static_hook(void *param);
+void		ft_randomize(t_RData *r_d);
 
 //psy_color.c
-void	max_c_wrapper(void *param);
-int		ft_max_c(int signal);
-void	color_psy_hook(void *param);
-void	ft_psy_flow(t_RData *r_d, int activity_status, int max_activity_status);
+void		max_c_wrapper(void *param);
+int			ft_max_c(int signal);
+void		color_psy_hook(void *param);
+void		ft_psy_flow(t_RData *r_d, int activity_status, int max_activity_status);
 
 //colors.c
 uint32_t	ft_color_from_seed(int iter, int max_iter);
 uint32_t	ft_color_arr(int i);
 
 //drawer.c
-void	pixel_to_complex(t_Pix pixel, t_RData *r_d, double *real, double *imag);
-void	draw_from_iter_counts(t_RData *r_d);
-void	draw_set(t_RData *r_d);
-void	place_color(t_RData *r_d, t_Pix pos);
+void		pixel_to_complex(t_Pix pixel, t_RData *r_d, double *real, double *imag);
+void		draw_from_iter_counts(t_RData *r_d);
+void		draw_set(t_RData *r_d);
+void		place_color(t_RData *r_d, t_Pix pos);
 
 //delayed-drawer.c
-int		init_background_render(t_RData *r_d);
-int		continue_background_render(t_RData *r_d);
-void	complete_render(t_RData *r_d);
-void	clear_background_render(t_RData *r_d);
+int			init_background_render(t_RData *r_d);
+int			continue_background_render(t_RData *r_d);
+void		complete_render(t_RData *r_d);
+void		clear_background_render(t_RData *r_d);
 
 //partial_render_basic.c
-void	outer_render(t_RData *r_d, t_PixBox *rendered_pix);
-void	buffer_segment(t_RData *r_d, t_PixBox *pixel_bounds);
-void	draw_segment(t_RData *r_d, t_PixBox *pixel_bounds);
+void		outer_render(t_RData *r_d, t_PixBox *rendered_pix);
+void		buffer_segment(t_RData *r_d, t_PixBox *pixel_bounds);
+void		draw_segment(t_RData *r_d, t_PixBox *pixel_bounds);
 
 //shift_basic.c
-void	shift_pixels_x_l(t_RData *r_d, int shift_offset);
-void	shift_pixels_x_r(t_RData *r_d, int shift_offset);
-void	shift_pixels_y_u(t_RData *r_d, int shift_offset);
-void	shift_pixels_y_d(t_RData *r_d, int shift_offset);
+void		shift_pixels_x_l(t_RData *r_d, int shift_offset);
+void		shift_pixels_x_r(t_RData *r_d, int shift_offset);
+void		shift_pixels_y_u(t_RData *r_d, int shift_offset);
+void		shift_pixels_y_d(t_RData *r_d, int shift_offset);
 
 //utils.c
 t_PixBox	get_inner_box_from_bounds(t_RData *r_d);
 t_PixBox	get_inner_box_from_pixels(t_RData *r_d, t_Pix cursor);
 
 //atod.c
-double	ft_atod(const char *nptr);
+double		ft_atod(const char *nptr);
 
 //check_input.c
-int		check_input(int argc, char **argv);
+int			check_input(int argc, char **argv);
 
 //check_input_helpers.c
-int		ft_isdouble(char *str);
-int		ft_isint(char *str);
+int			ft_isdouble(char *str);
+int			ft_isint(char *str);
 
 //resize.c
-void	resize_window(int32_t width, int32_t height, void *param);
+void		resize_window(int32_t width, int32_t height, void *param);
