@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:00:39 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:55:15 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_psy_flow(t_RData *r_d, int c_code, int max_c)
 			rgba.g = (int)(127.5 * (cos(grouping_factor * 0.2) + 1));
 			rgba.b = (int)(127.5 * (sin(grouping_factor * 0.3) + 1));
 			rgba.a = 0xFF;
-			color = ft_pixel(r, g, b, a);
+			color = ft_pixel(rgba.r, rgba.g, rgba.b, rgba.a);
 			ft_memmove(p, &color, BPP * 3 / 4);
 			pix.y++;
 		}
