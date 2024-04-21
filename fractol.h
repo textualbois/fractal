@@ -6,6 +6,7 @@
 #include "MLX42/MLX42.h"
 //#include "MLX42/MLX42_int.h"
 #include "libft/libft.h"
+#include "ft_printf/ft_printf.h"
 
 #define OTHER_TASK_PRESENT 0
 //#define render_required 1
@@ -206,3 +207,6 @@ int			ft_isint(char *str);
 
 //resize.c
 void		resize_window(int32_t width, int32_t height, void *param);
+
+//show_inputs.c
+void	show_inputs(void);
