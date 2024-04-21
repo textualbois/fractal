@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:49:06 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:00:31 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/21 18:45:29 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	buffer_segment(t_RData *r_d, t_PixBox *pixel_bounds)
 {
 	int		color_seed;
 	int		color;
-	t_Dpair	point;
+	t_DPair	point;
 	t_Pix	pix;
 
 	pix.x = pixel_bounds->left_x;
