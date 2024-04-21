@@ -187,7 +187,7 @@ uint32_t ft_color_arr(int i)
 uint32_t	ft_color_from_seed(int iter, int max_iter)
 {
 	if (iter == max_iter)
-		return (default_color); // Black
+		return (DEFAULT_COLOR); // Black
 	else
 		return (ft_color_arr(iter % 11));
 }

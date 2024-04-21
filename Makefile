@@ -1,7 +1,7 @@
 NAME = fractol
 
 SRCS_NAME = fractol.c init.c init_helper.c clear.c zoom.c mover.c loops_hooks.c \
-			drawer.c set_functions.c check_input.c check_input_helpers.c atod.c\
+			drawer.c set_ftions.c check_input.c check_input_helpers.c atod.c\
 			shift_basic.c partial_render_basic.c utils.c delayed_drawer.c resize.c\
 			colors.c colors2.c color_shift.c color_static.c init_img_meta.c psy_color.c
 SRCS_PATH = ./

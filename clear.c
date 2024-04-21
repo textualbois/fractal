@@ -1,25 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clear.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/20 19:47:32 by isemin            #+#    #+#             */
+/*   Updated: 2024/04/21 18:10:38 by isemin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./fractol.h"
 
-void free_FractalBounds(t_FractalBounds *bounds)
+void	free_fbounds(t_bounds *bounds)
 {
 	free(bounds);
 }
 
-// Function to free memory allocated for RenderData struct
-void free_RenderData(t_RenderData *render_data)
+void	free_rdata(t_RData *render_data)
 {
-	free(render_data->bounds);  // Free the FractalBounds within RenderData
-	clear_background_render(render_data);   // Clear background image data
-	if (render_data->f_code == jul)
+	free(render_data->bounds);
+	clear_background_render(render_data);
+	if (render_data->f_code == JUL)
 		free(render_data->j_params);
 	if (render_data->iter_count != NULL)
 		clear_iter_data(render_data->iter_count, render_data->Height - 1);
 	free(render_data);
 }
 
-// Function to free memory allocated for W_R_D struct
-void free_W_R_D(t_W_R_D *w_r_d)
+void	free_w_r_d(t_W_R_D *w_r_d)
 {
-	free_RenderData(w_r_d->r_data);  // Free the RenderData within W_R_D
+	free_rdata(w_r_d->r_data);
 	free(w_r_d);
 }

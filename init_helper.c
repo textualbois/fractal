@@ -1,22 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_helper.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/20 19:41:21 by isemin            #+#    #+#             */
+/*   Updated: 2024/04/21 18:13:19 by isemin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./fractol.h"
 
-t_RenderData	*init_mandelbrot(mlx_t *window, int argc, char **argv, int f_id)
+t_RData	*init_mandelbrot(mlx_t *window, int argc, char **argv, int f_id)
 {
-	t_FractalBounds	*bounds;
-	t_RenderData	*render_data;
-	int				precision;
+	t_bounds	*bounds;
+	t_RData		*render_data;
+	int			max_iter;
 
-	bounds = init_FractalBounds(-2.0, 2.0, -2.0, 2.0);
+	bounds = initbounds(-2.0, 2.0, -2.0, 2.0);
 	if (!bounds)
 		return (NULL);
 	if (argc == 3)
-		precision = ft_atoi(argv[2]);
+		max_iter = ft_atoi(argv[2]);
 	else
-		precision = 300;
-	if (f_id == mandel)
-		render_data = init_rData(bounds, window, &mandelbrot, precision);
+		max_iter = 300;
+	if (f_id == MANDEL)
+		render_data = init_rdata(bounds, window, &mandelbrot, max_iter);
 	else
-		render_data = init_rData(bounds, window, &burning_ship, precision);
+		render_data = init_rdata(bounds, window, &burning_ship, max_iter);
 	if (!render_data)
 	{
 		free(bounds);
@@ -25,12 +37,12 @@ t_RenderData	*init_mandelbrot(mlx_t *window, int argc, char **argv, int f_id)
 	return (render_data);
 }
 
-static void	init_j_params(t_FractalBounds **bounds, t_DoublePair **c, int argc, char **argv)
+static void	init_j_p_s(t_bounds **bounds, t_DPair **c, int argc, char **argv)
 {
-	*bounds = init_FractalBounds(-2.0, 2.0, -2.0, 2.0);
+	*bounds = initbounds(-2.0, 2.0, -2.0, 2.0);
 	if (*bounds != NULL)
 	{
-		*c = (t_DoublePair *)malloc(sizeof(t_DoublePair));
+		*c = (t_DPair *)malloc(sizeof(t_DPair));
 		if (*c != NULL)
 		{
 			if (argc == 5)
@@ -52,23 +64,23 @@ static void	init_j_params(t_FractalBounds **bounds, t_DoublePair **c, int argc, 
 	}
 }
 
-t_RenderData *init_julia(mlx_t *window, int argc, char **argv)
+t_RData	*init_julia(mlx_t *window, int argc, char **argv)
 {
-	t_FractalBounds *bounds;
-	t_RenderData	*render_data;
-	t_DoublePair	*c;
-	int				precision;
+	t_bounds		*bounds;
+	t_RData	*render_data;
+	t_DPair	*c;
+	int				max_iter;
 
 	bounds = NULL;
 	c = NULL;
 	if (argc >= 3)
-		precision = ft_atoi(argv[2]);
+		max_iter = ft_atoi(argv[2]);
 	else
-		precision = 300;
-	init_j_params(&bounds, &c, argc, argv);
+		max_iter = 300;
+	init_j_p_s(&bounds, &c, argc, argv);
 	if (bounds == NULL)
 		return (NULL);
-	render_data = init_rData(bounds, window, &julia, precision);
+	render_data = init_rdata(bounds, window, &julia, max_iter);
 	if (render_data == NULL)
 	{
 		free(bounds);
@@ -79,22 +91,22 @@ t_RenderData *init_julia(mlx_t *window, int argc, char **argv)
 	return (render_data);
 }
 
-t_RenderData *init_debug(mlx_t *window, int argc, char **argv)
+t_RData	*init_debug(mlx_t *window, int argc, char **argv)
 {
-	t_FractalBounds *bounds;
-	t_RenderData	*render_data;
-	int				precision;
+	t_bounds		*bounds;
+	t_RData			*render_data;
+	int				max_iter;
 
-	bounds = init_FractalBounds(-2.0, 2.0, -2.0, 2.0);
+	bounds = initbounds(-2.0, 2.0, -2.0, 2.0);
 	if (!bounds)
 		return (NULL);
 	if (argc == 3)
 	{
-		precision = ft_atoi(argv[2]);
+		max_iter = ft_atoi(argv[2]);
 	}
 	else
-		precision = 300;
-	render_data = init_rData(bounds, window, &mandelbrot, precision);
+		max_iter = 300;
+	render_data = init_rdata(bounds, window, &mandelbrot, max_iter);
 	if (!render_data)
 	{
 		free(bounds);
