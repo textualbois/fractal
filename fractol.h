@@ -18,7 +18,7 @@
 #define BACKGROUND_RENDER_STARTED 2
 #define WIDTH 800
 #define HEIGHT 800
-#define BPP 32
+#define BPP sizeof(int32_t)
 #define MANDEL 1
 #define JUL 2
 #define B_SHIP 3
