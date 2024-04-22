@@ -18,7 +18,7 @@
 #define BACKGROUND_RENDER_STARTED 2
 #define WIDTH 800
 #define HEIGHT 800
-#define BPP sizeof(int32_t)
+#define BPP 32
 #define MANDEL 1
 #define JUL 2
 #define B_SHIP 3
@@ -129,11 +129,21 @@ void		zoom_out(t_RData *r_d, t_Pix cursor);
 void		down_scale(t_RData *r_d, t_PixBox box, double scale_x, double scale_y);
 void		ft_zoom(double x_delta, double y_delta, void *param);
 
+//draw_router.c
+void	quick_draw(t_W_R_D	*wrd);
+void	smart_draw(t_W_R_D	*wrd);
+
 //mover.c
 void		move_left(t_RData *r_d);
 void		move_right(t_RData *r_d);
 void		move_up(t_RData *r_d);
 void		move_down(t_RData *r_d);
+
+//mover_quick.c
+void		move_left_quick(t_RData *r_d);
+void		move_right_quick(t_RData *r_d);
+void		move_up_quick(t_RData *r_d);
+void		move_down_quick(t_RData *r_d);
 
 //loops_hooks.c
 void		ft_exit_button(void *param);
@@ -177,7 +187,7 @@ void		place_color(t_RData *r_d, t_Pix pos);
 //delayed-drawer.c
 int			init_background_render(t_RData *r_d);
 int			continue_background_render(t_RData *r_d);
-void		complete_render(t_RData *r_d);
+void		complete_background_render(t_RData *r_d);
 void		clear_background_render(t_RData *r_d);
 
 //partial_render_basic.c

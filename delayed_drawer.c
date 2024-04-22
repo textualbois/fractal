@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:34:42 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 12:06:21 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,7 @@
 int	init_background_render(t_RData *r_d)
 {
 	(void)r_d;
-    // if (r_d->pixel_buffer != NULL)
-    // {
-    //     printf("oops, pixel buffer should be null\n");
-    //     clear_background_render(r_d);
-    // }
-    // r_d->pixel_buffer = (uint8_t*)malloc(BPP * r_d->width * r_d->height);
-    // if (r_d->pixel_buffer != NULL)
-    // {
-	//    r_d->buffer_pointer = r_d->pixel_buffer;
 	return (BACKGROUND_RENDER_STARTED);
-    // }
-    // return (background_render_not_started);
 }
 
 int	continue_background_render(t_RData *r_d)
@@ -51,7 +40,7 @@ int	continue_background_render(t_RData *r_d)
 	return (pix.y);
 }
 
-void	complete_render(t_RData *r_d)
+void	complete_background_render(t_RData *r_d)
 {
 	r_d->render_status = BACKGROUND_RENDER_NOT_STARTED;
 	r_d->render_required = false;

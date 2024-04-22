@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:46:50 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 12:06:21 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,10 @@ void	ft_image_shift(void *param)
 	t_W_R_D	*wrd;
 
 	wrd = (t_W_R_D *)param;
-	if (mlx_is_key_down(wrd->window, MLX_KEY_DOWN))
-	{
-		clear_background_render(wrd->r_data);
-		move_down(wrd->r_data);
-	}
-	if (mlx_is_key_down(wrd->window, MLX_KEY_UP))
-	{
-		clear_background_render(wrd->r_data);
-		move_up(wrd->r_data); ////// change this later
-		draw_set(wrd->r_data); ////// change this later
-	}
-	if (mlx_is_key_down(wrd->window, MLX_KEY_LEFT))
-	{
-		clear_background_render(wrd->r_data);
-		move_left(wrd->r_data);
-	}
-	if (mlx_is_key_down(wrd->window, MLX_KEY_RIGHT))
-	{
-		clear_background_render(wrd->r_data);
-		move_right(wrd->r_data);
-	}
+	if (wrd->r_data->render_status == BACKGROUND_RENDER_STARTED)
+		quick_draw(wrd);
+	else
+		smart_draw(wrd);
 }
 
 void	background_render(void *param)
@@ -70,7 +53,7 @@ void	background_render(void *param)
 		{
 			row_completed = continue_background_render(wrd->r_data);
 			if (row_completed == wrd->r_data->height)
-				complete_render(wrd->r_data);
+				complete_background_render(wrd->r_data);
 		}
 	}
 }
