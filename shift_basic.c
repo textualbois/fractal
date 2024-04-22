@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:18:43 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 09:47:25 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	shift_pixels_x_l(t_RData *r_d, int shift_offset)
 	y = 0;
 	while (y < r_d->height)
 	{
-		ft_memmove(r_d->iter_count[y],\
-			r_d->iter_count[y] + shift_offset,\
-			(r_d->width - shift_offset) * sizeof(int));
+		ft_memmove(r_d->iter_count[y], \
+		r_d->iter_count[y] + shift_offset, \
+		(r_d->width - shift_offset) * sizeof(int));
 		y++;
 	}
 }
@@ -36,8 +36,8 @@ void	shift_pixels_x_r(t_RData *r_d, int shift_offset)
 	while (y < r_d->height)
 	{
 		ft_memmove(r_d->iter_count[y] + shift_offset, \
-			r_d->iter_count[y],\
-			(r_d->width - shift_offset) * sizeof(int));
+		r_d->iter_count[y], \
+		(r_d->width - shift_offset) * sizeof(int));
 		y++;
 	}
 }
@@ -50,9 +50,9 @@ void	shift_pixels_y_u(t_RData *r_d, int shift_offset)
 	y = 0;
 	while (y + shift_offset < r_d->height)
 	{
-		ft_memmove(r_d->iter_count[y],\
-			r_d->iter_count[y + shift_offset], \
-			r_d->width * sizeof(int));
+		ft_memmove(r_d->iter_count[y], \
+		r_d->iter_count[y + shift_offset], \
+		r_d->width * sizeof(int));
 		y++;
 	}
 }
@@ -65,9 +65,9 @@ void	shift_pixels_y_d(t_RData *r_d, int shift_offset)
 	y = r_d->height - 1;
 	while (y - shift_offset >= 0)
 	{
-		ft_memmove(r_d->iter_count[y],\
-			r_d->iter_count[y - shift_offset], \
-			r_d->width * sizeof(int));
+		ft_memmove(r_d->iter_count[y], \
+		r_d->iter_count[y - shift_offset], \
+		r_d->width * sizeof(int));
 		y--;
 	}
 }
