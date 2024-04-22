@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:40:48 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 09:17:02 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	clear_rows(int **iter_data, int row_max)
 {
 	while (row_max >= 0)
 	{
-		printf("freeing row %i\n", row_max);
 		free(iter_data[row_max]);
 		iter_data[row_max] = NULL;
 		row_max--;
