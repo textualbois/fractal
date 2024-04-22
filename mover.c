@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:46:46 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 09:45:34 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	move_right(t_RData *r_d)
 {
-	double r_delta;
-	int shift_offset;
-	t_PixBox rendered_pixels;
+	double		r_delta;
+	int			shift_offset;
+	t_PixBox	rendered_pixels;
 
 	r_delta = (r_d->bounds->max_r - r_d->bounds->min_r) * 0.02;
 	shift_offset = r_d->width * 0.02;
