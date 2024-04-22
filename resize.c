@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:08:37 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/22 18:56:05 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 19:07:42 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ void	resize_window(int32_t width, int32_t height, void *param)
 	r_d->height = height;
 	r_d->render_required = false;
 	draw_set(r_d);
-	//r_d->render_required = true;
 }
