@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:20:39 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/22 13:26:23 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 18:27:46 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ t_PixBox	get_inner_box_from_pixels(t_RData *r_d, t_Pix cursor)
 	inner_box.right_x = r_d->width * 0.95;
 	y_shift = (cursor.y * (r_d->height - inner_box.bottom_y) / r_d->height);
 	x_shift = (cursor.x * (r_d->width - inner_box.right_x) / r_d->width);
+	if (y_shift < 0)
+		y_shift = 0;
+	if (x_shift < 0)
+		x_shift = 0;
 	inner_box.top_y += y_shift;
 	inner_box.bottom_y += y_shift;
 	inner_box.left_x += x_shift;

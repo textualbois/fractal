@@ -6,13 +6,13 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:39:34 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 20:23:50 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 13:28:53 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-static mlx_t*	initialize_window(void)
+static mlx_t	*initialize_window(void)
 {
 	mlx_t	*window;
 
@@ -54,6 +54,7 @@ int	main(int argc, char **argv)
 	mlx_t	*window;
 	int		fn_id;
 
+	printf("BPP = %lu\n", sizeof(int32_t));
 	fn_id = check_input(argc, argv);
 	if (fn_id <= 0)
 	{

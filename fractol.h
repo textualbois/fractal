@@ -77,6 +77,8 @@ typedef struct s_RData{
 	int			block_render;
 	bool		render_required;
 	int			render_status;
+	bool		static_active;
+	bool		psy_active;
 
 	int			**iter_count;
 	uint8_t		*buffer_pointer;

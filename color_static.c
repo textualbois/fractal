@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:31:29 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 18:47:13 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	color_static_hook(void *param)
 	if (mlx_is_key_down(wrd->window, MLX_KEY_SPACE))
 	{
 		clear_background_render(wrd->r_data);
+		wrd->r_data->static_active = true;
 		wrd->r_data->render_required = true;
 		static_active = true;
 		ft_randomize(wrd->r_data);
@@ -61,5 +62,6 @@ void	color_static_hook(void *param)
 	{
 		draw_from_iter_counts(wrd->r_data);
 		static_active = false;
+		wrd->r_data->static_active = false;
 	}
 }

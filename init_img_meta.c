@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:40:48 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/22 09:17:02 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 18:39:10 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	clear_rows(int **iter_data, int row_max)
 {
 	while (row_max >= 0)
 	{
+		//printf("freeing row %i\n", row_max);
 		free(iter_data[row_max]);
 		iter_data[row_max] = NULL;
 		row_max--;
@@ -87,7 +88,7 @@ int	**iter_data_copy(t_RData *r_d)
 	i.y = 0;
 	while (i.y < r_d->height)
 	{
-		i.x = r_d->height;
+		i.x = r_d->width;
 		ft_memmove(iter_dat[i.y], r_d->iter_count[i.y], i.x * sizeof(int));
 		i.y++;
 	}

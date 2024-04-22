@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:00:39 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:55:15 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 18:47:14 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	color_psy_hook(void *param)
 	{
 		max_c = ft_max_c(GIVE_MAX_C);
 		clear_background_render(wrd->r_data);
+		wrd->r_data->psy_active = true;
 		wrd->r_data->render_required = true;
 		activity_status++;
 		if (activity_status >= max_c)
@@ -86,5 +87,6 @@ void	color_psy_hook(void *param)
 	{
 		draw_from_iter_counts(wrd->r_data);
 		activity_status = 0;
+		wrd->r_data->psy_active = false;
 	}
 }
