@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:46:50 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/22 12:06:21 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/22 13:19:14 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	background_render(void *param)
 	(void)wrd;
 	if (wrd->r_data->block_render == true)
 	{
-		printf("blocked a render\n");
+		ft_printf("blocked a render\n");
 		clear_background_render(wrd->r_data);
 		wrd->r_data->render_status = BACKGROUND_RENDER_NOT_STARTED;
 	}
