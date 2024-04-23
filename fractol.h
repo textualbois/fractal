@@ -126,9 +126,9 @@ void ft_zoom(double x_delta, double y_delta, void *param);
 
 //zoom.c
 void		zoom_in(t_RData *r_d, t_Pix cursor);
-void		stretch(t_RData *r_d, t_PixBox box, double scale_x, double scale_y);
+void		stretch(t_RData *r_d, t_PixBox box, t_DPair scale);
 void		zoom_out(t_RData *r_d, t_Pix cursor);
-void		down_scale(t_RData *r_d, t_PixBox box, double scale_x, double scale_y);
+void		down_scale(t_RData *r_d, t_PixBox box, t_DPair scale);
 void		ft_zoom(double x_delta, double y_delta, void *param);
 
 //draw_router.c
