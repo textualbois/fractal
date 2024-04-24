@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:21:54 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/24 18:27:32 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:56:07 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ static int	check_mandelbrot(int argc, char **argv)
 		if (ft_isint(argv[2]) == 0)
 		{
 			ft_printf("second parameter should be int\n");
+			return (0);
+		}
+		else if (ft_atoi(argv[2]) < 1)
+		{
+			ft_printf("second parameter has to be more than 0\n");
 			return (0);
 		}
 		else if (argc >= 4)
@@ -37,6 +42,11 @@ static int	check_julia(int argc, char **argv)
 		if (ft_isint(argv[2]) == 0)
 		{
 			ft_printf("second parameter should be int\n");
+			return (0);
+		}
+		else if (ft_atoi(argv[2]) < 1)
+		{
+			ft_printf("second parameter has to be more than 0\n");
 			return (0);
 		}
 		else if (argc == 4 || argc >= 6)
@@ -60,6 +70,11 @@ static int	check_ship(int argc, char **argv)
 		if (ft_isint(argv[2]) == 0)
 		{
 			ft_printf("second parameter should be int\n");
+			return (0);
+		}
+		else if (ft_atoi(argv[2]) < 1)
+		{
+			ft_printf("second parameter has to be more than 0\n")
 			return (0);
 		}
 		else if (argc >= 4)
