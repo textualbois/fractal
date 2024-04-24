@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:37:51 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 18:24:22 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	pixel_to_complex(t_Pix pixel, t_RData *r_d, double *real, double *imag)
 	* (bounds->max_i - bounds->min_i);
 }
 
-// Function to draw the mandelbrot set
 void	draw_from_iter_counts(t_RData *r_d)
 {
 	t_Pix	pixel;
@@ -47,7 +46,6 @@ void	draw_set(t_RData *r_d)
 	double	imag;
 	t_Pix	pixel;
 
-	//printf("new render called. bounds (min_x, max_x)(min_i, max_i) (%f, %f)(%f, %f)\n", r_d->bounds->min_r, r_d->bounds->max_r,r_d->bounds->min_i,r_d->bounds->max_i);
 	pixel.x = 0;
 	while (pixel.x < r_d->width)
 	{

@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:46:46 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/22 12:01:19 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 18:53:49 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	move_down(t_RData *r_d)
 
 void	move_up(t_RData *r_d)
 {
-	double	bounds_l;
-	int		shift_offset;
+	double		bounds_l;
+	int			shift_offset;
 	t_PixBox	rendered_pixels;
 
 	shift_offset = 10;

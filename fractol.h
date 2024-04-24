@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/24 18:49:05 by isemin            #+#    #+#             */
+/*   Updated: 2024/04/24 18:54:52 by isemin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include "MLX42/MLX42.h"
-//#include "MLX42/MLX42_int.h"
 #include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
 
@@ -161,7 +171,7 @@ int			burning_ship(double real, double imag, int max_iter, void *param);
 int			debug_grid(double real, double imag, int max_iter, void *param);
 
 //julia_shift.c
-void	julia_shift(double x, double y, void *param);
+void		julia_shift(double x, double y, void *param);
 
 //color_shift.c
 void		color_shift_hook(void *param);
@@ -179,9 +189,8 @@ void		color_psy_hook(void *param);
 void		ft_psy_flow(t_RData *r_d, int activity_status, \
 						int max_activity_status);
 
-//colors.c
+//colors2.c
 uint32_t	ft_color_from_seed(int iter, int max_iter);
-uint32_t	ft_color_arr(int i);
 
 //drawer.c
 void		pixel_to_complex(t_Pix pixel, t_RData *r_d, \
@@ -225,4 +234,4 @@ int			ft_isint(char *str);
 void		resize_window(int32_t width, int32_t height, void *param);
 
 //show_inputs.c
-void	show_inputs(void);
+void		show_inputs(void);

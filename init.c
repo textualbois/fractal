@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:08:48 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:53:05 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 18:48:32 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_RData	*init_rdata(t_bounds *bounds, mlx_t *window, void *set_f, int max_iter)
 	return (render_data);
 }
 
-// Function to initialize W_R_D struct
 t_W_R_D	*init_w_r_d(mlx_t *window, t_RData *render_data)
 {
 	t_W_R_D	*w_r_d;

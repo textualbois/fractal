@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_input_helpers.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/24 18:23:20 by isemin            #+#    #+#             */
+/*   Updated: 2024/04/24 18:23:41 by isemin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./fractol.h"
 
-int ft_isdouble(char *str)
+int	ft_isdouble(char *str)
 {
 	int	i;
 	int	dot_count;
@@ -24,7 +36,7 @@ int ft_isdouble(char *str)
 	return (0);
 }
 
-int ft_isint(char *str)
+int	ft_isint(char *str)
 {
 	int	i;
 	int	sign_count;

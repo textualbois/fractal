@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 19:41:21 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:13:19 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 18:50:05 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static void	init_j_p_s(t_bounds **bounds, t_DPair **c, int argc, char **argv)
 t_RData	*init_julia(mlx_t *window, int argc, char **argv)
 {
 	t_bounds		*bounds;
-	t_RData	*render_data;
-	t_DPair	*c;
+	t_RData			*render_data;
+	t_DPair			*c;
 	int				max_iter;
 
 	bounds = NULL;

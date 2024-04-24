@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   atod.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/24 18:20:41 by isemin            #+#    #+#             */
+/*   Updated: 2024/04/24 18:21:20 by isemin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./fractol.h"
 
-static double atod_decimal_part(double res, int sign, const char *nptr, int i)
+static double	atod_decimal_part(double res, int sign, const char *nptr, int i)
 {
 	double	d_part;
 	int		dev;
@@ -51,5 +63,4 @@ double	ft_atod(const char *nptr)
 		i++;
 	}
 	return (atod_decimal_part(res, sign, nptr, i));
-	return (sign * res + (sign == 0) * res);
 }
