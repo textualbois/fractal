@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:08:48 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/24 18:48:32 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:58:46 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_bounds	*initbounds(double min_r, double max_r, double min_i, double max_i)
 	return (bounds);
 }
 
-// Function to initialize RenderData struct
 t_RData	*init_rdata(t_bounds *bounds, mlx_t *window, void *set_f, int max_iter)
 {
 	t_RData	*render_data;
@@ -37,7 +36,7 @@ t_RData	*init_rdata(t_bounds *bounds, mlx_t *window, void *set_f, int max_iter)
 	render_data->image = mlx_new_image(window, WIDTH, HEIGHT);
 	if (!(render_data->image))
 	{
-		puts(mlx_strerror(mlx_errno));
+		ft_printf("failed to initialize image\n");
 		return (NULL);
 	}
 	render_data->bounds = bounds;
@@ -48,7 +47,7 @@ t_RData	*init_rdata(t_bounds *bounds, mlx_t *window, void *set_f, int max_iter)
 	render_data->iter_count = iter_data(WIDTH, HEIGHT);
 	if (render_data->iter_count == NULL)
 	{
-		puts(mlx_strerror(mlx_errno));
+		ft_printf("failed to initialise fractal iterations counter\n");
 		free_rdata(render_data);
 		return (NULL);
 	}

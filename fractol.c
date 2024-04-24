@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:39:34 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/24 18:44:37 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:47:10 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static mlx_t	*initialize_window(void)
 
 	window = mlx_init(WIDTH, HEIGHT, "Fractol", true);
 	if (!window)
-		puts(mlx_strerror(mlx_errno));
+		ft_printf("error making window.\n");
 	return (window);
 }
 
@@ -27,7 +27,7 @@ static void	cleanup_and_exit_failure(mlx_t *window, t_W_R_D *w_r_d)
 	if (w_r_d != NULL)
 		free_w_r_d(w_r_d);
 	mlx_close_window(window);
-	puts(mlx_strerror(mlx_errno));
+	ft_printf("failed to draw image to window\n");
 }
 
 static int	setup_and_draw(mlx_t *window, int fn_id, int argc, char **argv)
@@ -40,10 +40,7 @@ static int	setup_and_draw(mlx_t *window, int fn_id, int argc, char **argv)
 	ft_color_from_seed(-1, -1);
 	draw_set(w_r_d->r_data);
 	if (mlx_image_to_window(window, w_r_d->r_data->image, 0, 0) == -1)
-	{
-		cleanup_and_exit_failure(window, w_r_d);
 		return (0);
-	}
 	init_loops_n_hooks(w_r_d);
 	free_w_r_d(w_r_d);
 	return (1);
