@@ -154,13 +154,14 @@ void		ft_image_shift(void *param);
 void		init_loops_n_hooks(t_W_R_D *wrd);
 void		background_render(void *param);
 
-// void ft_black_out_hook(void *param);
-
-//set_ftions.c
+//set_functions.c
 int			mandelbrot(double real, double imag, int max_iter, void *param);
 int			julia(double real, double imag, int max_iter, void *param);
 int			burning_ship(double real, double imag, int max_iter, void *param);
 int			debug_grid(double real, double imag, int max_iter, void *param);
+
+//julia_shift.c
+void	julia_shift(double x, double y, void *param);
 
 //color_shift.c
 void		color_shift_hook(void *param);
