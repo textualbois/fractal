@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:23:34 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/23 19:37:38 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:32:03 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,35 +38,16 @@ void	zoom_in(t_RData *r_d, t_Pix cursor)
 void	stretch(t_RData *r_d, t_PixBox box, t_DPair scale)
 {
 	uint8_t		*temp;
-	t_Pix		dst;
-	t_PixDouble	src;
-	int			y_whole;
 
-	temp = (uint8_t *)malloc(BPP * r_d->width * r_d->height);
-	if (temp != NULL)
+	temp = NULL;
+	prepare_image_buffer(r_d, &temp);
+	if (temp == NULL)
+		draw_set(r_d);
+	else
 	{
-		ft_memmove(temp, r_d->image->pixels, BPP * r_d->width * r_d->height);
-		dst.y = 0;
-		src.y = box.top_y;
-		while (dst.y < r_d->height)
-		{
-			dst.x = 0;
-			src.x = box.left_x;
-			y_whole = (int)round(src.y);
-			while (dst.x < r_d->width)
-			{
-				ft_memmove(r_d->image->pixels + ((int)(dst.y * r_d->width + dst.x) * BPP), \
-				temp + ((int)(y_whole * r_d->width + (int)round(src.x)) * BPP), BPP);
-				dst.x++;
-				src.x += scale.x;
-			}
-			dst.y++;
-			src.y += scale.y;
-		}
+		stretch_image(r_d, box, scale, temp);
 		free(temp);
 	}
-	else
-		draw_set(r_d);
 }
 
 void	zoom_out(t_RData *r_d, t_Pix cursor)
@@ -97,35 +78,17 @@ void	zoom_out(t_RData *r_d, t_Pix cursor)
 
 void	down_scale(t_RData *r_d, t_PixBox box, t_DPair scale)
 {
-	int			**temp;
-	t_Pix		dst;
-	t_PixDouble	src;
-	int			y_whole;
+	int	**temp;
 
 	temp = iter_data_copy(r_d);
-	if (temp != NULL)
-	{
-		dst.y = box.top_y;
-		src.y = 0;
-		while (dst.y < box.bottom_y)
-		{
-			dst.x = box.left_x;
-			src.x = 0;
-			y_whole = (int)round(src.y);
-			while (dst.x < box.right_x)
-			{
-				r_d->iter_count[dst.y][dst.x] = \
-				temp[y_whole][(int)round(src.x)];
-				dst.x++;
-				src.x += scale.x;
-			}
-			dst.y++;
-			src.y += scale.y;
-		}
-		clear_iter_data(temp, r_d->height - 1);
-	}
-	else
+	if (temp == NULL)
 		draw_set(r_d);
+	else
+	{
+		perform_downscale(r_d, box, scale, temp);
+		clear_iter_data(temp, r_d->height - 1)
+	}
+
 }
 
 void	ft_zoom(double x_delta, double y_delta, void *param)
@@ -133,7 +96,6 @@ void	ft_zoom(double x_delta, double y_delta, void *param)
 	t_W_R_D	*wrd;
 	t_Pix	cursor;
 
-	printf("zoom triggered\n");
 	wrd = (t_W_R_D *)param;
 	mlx_get_mouse_pos(wrd->window, &cursor.x, &cursor.y);
 	(void)x_delta;

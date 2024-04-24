@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:49:05 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/24 18:54:52 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:34:18 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,13 @@ void		stretch(t_RData *r_d, t_PixBox box, t_DPair scale);
 void		zoom_out(t_RData *r_d, t_Pix cursor);
 void		down_scale(t_RData *r_d, t_PixBox box, t_DPair scale);
 void		ft_zoom(double x_delta, double y_delta, void *param);
+
+//zoom_helpers.c
+void		prepare_image_buffer(t_RData *r_d, uint8_t **temp);
+void		stretch_image(t_RData *r_d, t_PixBox box, \
+						t_DPair scale, uint8_t *temp);
+void		perform_downscale(t_RData *r_d, t_PixBox box, \
+							t_DPair scale, int **temp);
 
 //draw_router.c
 void		quick_draw(t_W_R_D	*wrd);
