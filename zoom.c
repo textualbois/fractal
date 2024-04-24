@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:23:34 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/24 19:32:03 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:59:26 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,8 @@ void	down_scale(t_RData *r_d, t_PixBox box, t_DPair scale)
 	else
 	{
 		perform_downscale(r_d, box, scale, temp);
-		clear_iter_data(temp, r_d->height - 1)
+		clear_iter_data(temp, r_d->height - 1);
 	}
-
 }
 
 void	ft_zoom(double x_delta, double y_delta, void *param)
