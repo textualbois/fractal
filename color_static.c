@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:31:29 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/22 18:47:13 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 17:33:57 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	ft_randomize(t_RData *r_d)
 			p = img->pixels + ((pix.y * r_d->width + pix.x) * BPP);
 			if (r_d->iter_count[pix.y][pix.x] != r_d->max_iter)
 			{
-				color = ft_pixel(rand() % 0xFF, rand() % 0xFF,\
-					rand() % 0xFF, rand() % 0xFF);
+				color = ft_pixel(rand() % 0xFF, rand() % 0xFF, \
+								rand() % 0xFF, rand() % 0xFF);
 				ft_memmove(p, &color, BPP * 3 / 4);
 			}
 			pix.y++;

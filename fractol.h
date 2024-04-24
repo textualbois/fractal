@@ -18,7 +18,7 @@
 #define BACKGROUND_RENDER_STARTED 2
 #define WIDTH 800
 #define HEIGHT 800
-#define BPP sizeof(int32_t)
+#define BPP 4
 #define MANDEL 1
 #define JUL 2
 #define B_SHIP 3
@@ -97,7 +97,8 @@ typedef struct s_W_R_D{
 //init.c
 t_W_R_D		*init_all(mlx_t *window, int func_id, int argc, char **argv);
 t_bounds	*initbounds(double min_r, double max_r, double min_i, double max_i);
-t_RData		*init_rdata(t_bounds *bounds, mlx_t *window, void *set_f, int max_iter);
+t_RData		*init_rdata(t_bounds *bounds, mlx_t *window, \
+						void *set_f, int max_iter);
 t_W_R_D		*init_w_r_d(mlx_t *window, t_RData *render_data);
 
 //init_helper.c
@@ -132,8 +133,8 @@ void		down_scale(t_RData *r_d, t_PixBox box, t_DPair scale);
 void		ft_zoom(double x_delta, double y_delta, void *param);
 
 //draw_router.c
-void	quick_draw(t_W_R_D	*wrd);
-void	smart_draw(t_W_R_D	*wrd);
+void		quick_draw(t_W_R_D	*wrd);
+void		smart_draw(t_W_R_D	*wrd);
 
 //mover.c
 void		move_left(t_RData *r_d);
@@ -156,10 +157,10 @@ void		background_render(void *param);
 // void ft_black_out_hook(void *param);
 
 //set_ftions.c
-int			mandelbrot(double real, double imag, int max_max_iter, void *param);
-int			julia(double real, double imag, int max_max_iter, void *param);
-int			burning_ship(double real, double imag, int max_max_iter, void *param);
-int			debug_grid(double real, double imag, int max_max_iter, void *param);
+int			mandelbrot(double real, double imag, int max_iter, void *param);
+int			julia(double real, double imag, int max_iter, void *param);
+int			burning_ship(double real, double imag, int max_iter, void *param);
+int			debug_grid(double real, double imag, int max_iter, void *param);
 
 //color_shift.c
 void		color_shift_hook(void *param);
@@ -174,14 +175,16 @@ void		ft_randomize(t_RData *r_d);
 void		max_c_wrapper(void *param);
 int			ft_max_c(int signal);
 void		color_psy_hook(void *param);
-void		ft_psy_flow(t_RData *r_d, int activity_status, int max_activity_status);
+void		ft_psy_flow(t_RData *r_d, int activity_status, \
+						int max_activity_status);
 
 //colors.c
 uint32_t	ft_color_from_seed(int iter, int max_iter);
 uint32_t	ft_color_arr(int i);
 
 //drawer.c
-void		pixel_to_complex(t_Pix pixel, t_RData *r_d, double *real, double *imag);
+void		pixel_to_complex(t_Pix pixel, t_RData *r_d, \
+							double *real, double *imag);
 void		draw_from_iter_counts(t_RData *r_d);
 void		draw_set(t_RData *r_d);
 void		place_color(t_RData *r_d, t_Pix pos);

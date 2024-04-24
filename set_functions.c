@@ -6,13 +6,13 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:18:07 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/21 18:43:55 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 17:32:07 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-int	mandelbrot(double real, double imag, int max_max_iter, void *param)
+int	mandelbrot(double real, double imag, int max_iter, void *param)
 {
 	int		iter;
 	double	r;
@@ -24,7 +24,7 @@ int	mandelbrot(double real, double imag, int max_max_iter, void *param)
 	r = real;
 	i = imag;
 	iter = -1;
-	while (iter++ < max_max_iter)
+	while (iter++ < max_iter)
 	{
 		r2 = r * r;
 		i2 = i * i;
@@ -33,10 +33,10 @@ int	mandelbrot(double real, double imag, int max_max_iter, void *param)
 		i = 2 * r * i + imag;
 		r = r2 - i2 + real;
 	}
-	return (max_max_iter);
+	return (max_iter);
 }
 
-int	julia(double real, double imag, int max_max_iter, void *param)
+int	julia(double real, double imag, int max_iter, void *param)
 {
 	int			iter;
 	double		r2;
@@ -45,7 +45,7 @@ int	julia(double real, double imag, int max_max_iter, void *param)
 
 	c = (t_DPair *)param;
 	iter = -1;
-	while (iter++ < max_max_iter)
+	while (iter++ < max_iter)
 	{
 		r2 = real * real;
 		i2 = imag * imag;
@@ -54,10 +54,10 @@ int	julia(double real, double imag, int max_max_iter, void *param)
 		imag = 2 * real * imag + c->y;
 		real = r2 - i2 + c->x;
 	}
-	return (max_max_iter);
+	return (max_iter);
 }
 
-int	burning_ship(double real, double imag, int max_max_iter, void *param)
+int	burning_ship(double real, double imag, int max_iter, void *param)
 {
 	int		iter;
 	double	r;
@@ -69,7 +69,7 @@ int	burning_ship(double real, double imag, int max_max_iter, void *param)
 	r = real;
 	i = imag;
 	iter = -1;
-	while (iter++ < max_max_iter)
+	while (iter++ < max_iter)
 	{
 		r2 = r * r;
 		i2 = i * i;
@@ -80,10 +80,10 @@ int	burning_ship(double real, double imag, int max_max_iter, void *param)
 		i = 2 * r * i + imag;
 		r = r * r - i * i + real;
 	}
-	return (max_max_iter);
+	return (max_iter);
 }
 
-int	debug_grid(double real, double imag, int max_max_iter, void *param)
+int	debug_grid(double real, double imag, int max_iter, void *param)
 {
 	int	real_x3;
 	int	imag_x3;
@@ -92,7 +92,7 @@ int	debug_grid(double real, double imag, int max_max_iter, void *param)
 	imag_x3 = (int)(imag * 100);
 	(void)param;
 	if ((int)real_x3 % 5 == 0 || (int)imag_x3 % 5 == 0)
-		return (max_max_iter);
+		return (max_iter);
 	else
 		return (255);
 }
