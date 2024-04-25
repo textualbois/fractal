@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:29:06 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/04/25 20:47:45 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/25 20:54:26 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,6 @@ int32_t mlx_image_to_window(mlx_t* mlx, mlx_image_t* img, int32_t x, int32_t y)
 {
 	MLX_NONNULL(mlx);
 	MLX_NONNULL(img);
-	printf("called image to window. ");
-	printf("index - %zu\n", img->count);
 
 	// Allocate buffers...
 	img->count++;
