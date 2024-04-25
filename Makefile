@@ -21,7 +21,10 @@ FT_PRINTF_INCL = -I $(FT_PRINTF_PATH)
 FT_PRINTF_LIB = $(FT_PRINTF_PATH)ft_printf.a
 
 MLX_LIB = -L$(MLX_PATH)build -lmlx42
-GLFW_LIB = -L"/usr/local/Cellar/glfw/3.3.9/lib/" -lglfw
+#GLFW_LIB = -L"/usr/local/Cellar/glfw/3.3.9/lib/" -lglfw
+#GLFW_LIB = -L"/usr/local/Cellar/glfw/3.4/lib/" -lglfw
+GLFW_LIB = -L"/Users/isemin/.brew/Cellar/glfw/3.4" -lglfw
+#LSAN_LIB = -L"/Users/isemin/Documents/all_study/LeakSanitizer" -llsan
 LIBS = $(MLX_LIB) $(GLFW_LIB) -L$(LIBFT_PATH) -lft -L$(FT_PRINTF_PATH) -lftprintf -lm
 
 FRAMEWORKS = -framework OpenGL -framework IOKit -framework AppKit
@@ -32,7 +35,7 @@ OBJS = $(addprefix $(OBJ_DIR), $(SRCS_NAME:.c=.o))
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
 all: $(LIBFT_LIB) $(FT_PRINTF_LIB) $(MLX) $(NAME)
 	@echo "all DONE"
@@ -52,7 +55,6 @@ $(MLX):
 $(NAME): $(OBJ_DIR) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(DEPENDENCIES) -o $(NAME)
 	@echo "NAME DONE"
-
 
 $(OBJ_DIR)%.o: %.c
 	@$(CC) $(CFLAGS) $(MLX_INCL) -c $< -o $@
