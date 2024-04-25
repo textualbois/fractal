@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:39:34 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/25 20:27:47 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/25 20:31:23 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	main(int argc, char **argv)
 	mlx_t	*window;
 	int		fn_id;
 
-	atexit(leaks);
 	fn_id = check_input(argc, argv);
 	if (fn_id <= 0)
 	{
