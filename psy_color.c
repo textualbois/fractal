@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:00:39 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/25 20:17:45 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/25 20:28:00 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	color_psy_hook(void *param)
 			draw_set(wrd->r_data);
 		clear_background_render(wrd->r_data);
 		wrd->r_data->psy_active = true;
-		//wrd->r_data->render_required = true;
 		activity_status++;
 		if (activity_status >= max_c)
 			activity_status = 1;

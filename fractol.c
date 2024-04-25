@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:39:34 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/25 19:34:45 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/25 20:27:47 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,6 @@ static int	setup_and_draw(mlx_t *window, int fn_id, int argc, char **argv)
 	return (1);
 }
 
-void leaks()
-{
-	system("leaks fractol");
-}
-
 int	main(int argc, char **argv)
 {
 	mlx_t	*window;
@@ -75,6 +70,10 @@ int	main(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
+// void leaks()
+// {
+// 	system("leaks fractol");
+// }
 
 // void cleanup()
 // {
