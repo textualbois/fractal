@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:46:50 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/24 18:52:03 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/25 17:30:06 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,5 @@ void	init_loops_n_hooks(t_W_R_D *wrd)
 	mlx_loop_hook(wrd->window, background_render, wrd);
 	mlx_loop(wrd->window);
 	mlx_terminate(wrd->window);
+	mlx_delete_image(wrd->window, wrd->r_data->image);
 }

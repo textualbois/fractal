@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:21:54 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/24 19:56:07 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 20:17:22 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	check_ship(int argc, char **argv)
 		}
 		else if (ft_atoi(argv[2]) < 1)
 		{
-			ft_printf("second parameter has to be more than 0\n")
+			ft_printf("second parameter has to be more than 0\n");
 			return (0);
 		}
 		else if (argc >= 4)

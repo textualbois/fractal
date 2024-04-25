@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:49:05 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/24 19:34:18 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/24 20:01:38 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,14 +126,6 @@ int			**iter_data_copy(t_RData *r_d);
 void		free_fbounds(t_bounds *bounds);
 void		free_rdata(t_RData *render_data);
 void		free_w_r_d(t_W_R_D *w_r_d);
-
-/*
-//zoom.c
-void zoom_in(t_RData *r_d, int32_t cursor_x, int32_t cursor_y);
-void zoom_out(t_RData *r_d, int32_t cursor_x, int32_t cursor_y);
-void down_scale(t_RData *r_d, t_PixBox box, double scale);
-void ft_zoom(double x_delta, double y_delta, void *param);
-*/
 
 //zoom.c
 void		zoom_in(t_RData *r_d, t_Pix cursor);

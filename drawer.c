@@ -6,7 +6,7 @@
 /*   By: isemin <isemin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 17:37:51 by isemin            #+#    #+#             */
-/*   Updated: 2024/04/24 18:24:22 by isemin           ###   ########.fr       */
+/*   Updated: 2024/04/25 20:20:03 by isemin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	draw_from_iter_counts(t_RData *r_d)
 		}
 		pixel.x++;
 	}
+	complete_background_render(r_d);
 }
 
 void	draw_set(t_RData *r_d)
@@ -60,6 +61,7 @@ void	draw_set(t_RData *r_d)
 		}
 		pixel.x++;
 	}
+	complete_background_render(r_d);
 }
 
 void	place_color(t_RData *r_d, t_Pix pos)
